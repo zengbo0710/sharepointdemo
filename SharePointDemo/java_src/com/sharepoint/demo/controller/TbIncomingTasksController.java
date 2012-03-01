@@ -48,6 +48,7 @@ import cn.org.rapid_framework.page.impl.*;
 import com.sharepoint.demo.model.*;
 import com.sharepoint.demo.dao.*;
 import com.sharepoint.demo.service.*;
+import com.sharepoint.demo.util.MainConstants;
 import com.sharepoint.demo.vo.query.*;
 
 /**
@@ -85,13 +86,14 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	@ModelAttribute
 	public void init(ModelMap model) {
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
+		model.addAttribute("status", MainConstants.statusMap);
+		model.addAttribute("type", MainConstants.typeMap);
 	}
 	
 	/** 列表 */
 	@RequestMapping
 	public String index(ModelMap model,TbIncomingTasksQuery query,HttpServletRequest request,HttpServletResponse response) {
 		Page page = this.tbIncomingTasksManager.findPage(query);
-		
 		model.addAllAttributes(toModelMap(page, query));
 		return "/tbincomingtasks/index";
 	}

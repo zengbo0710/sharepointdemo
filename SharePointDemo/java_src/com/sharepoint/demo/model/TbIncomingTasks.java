@@ -82,7 +82,7 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
      * status       db_column: status 
      */ 	
 	
-	private java.lang.Float status;
+	private java.lang.Integer status;
     /**
      * statusReport       db_column: status_report 
      */ 	
@@ -161,11 +161,11 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 		this.assignedDate = value;
 	}
 	
-	public java.lang.Float getStatus() {
+	public java.lang.Integer getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(java.lang.Float value) {
+	public void setStatus(java.lang.Integer value) {
 		this.status = value;
 	}
 	

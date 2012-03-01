@@ -10,7 +10,7 @@
 		<input type="button" value="<fmt:message key="Back_to_list"/>" onclick="window.location='${ctx}/tbincomingtasks'"/>
 		<input type="button" value="<fmt:message key="Back"/>" onclick="history.back();"/>
 		
-		<table class="formTable">
+		<table class="formTable" align="center">
 		<%@ include file="form_include.jsp" %>
 		</table>
 		<input id="submitButton" name="submitButton" type="submit" value="<fmt:message key="Submit"/>" />

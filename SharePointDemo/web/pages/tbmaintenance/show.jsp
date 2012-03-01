@@ -16,7 +16,10 @@
 		<table class="formTable">
 			<tr>	
 				<td class="tdLabel"><fmt:message key="ALIAS_TYPE"/></td>	
-				<td><c:out value='${tbMaintenance.type}'/></td>
+				<td>
+					<c:set value='${tbMaintenance.type}' var='key'></c:set>
+					<c:out value="${type[key]}" />&nbsp;
+				</td>
 			</tr>
 			<tr>	
 				<td class="tdLabel"><fmt:message key="ALIAS_TITLE"/></td>	

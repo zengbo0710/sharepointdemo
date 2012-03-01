@@ -81,7 +81,7 @@ public class TbIncomingTasksDaoTest extends BaseDaoTestCase{
 		query.setPlannedDateEnd(new Date(System.currentTimeMillis()));
 		query.setAssignedDateBegin(new Date(System.currentTimeMillis()));
 		query.setAssignedDateEnd(new Date(System.currentTimeMillis()));
-	  	query.setStatus(new Float("1"));
+	  	query.setStatus(new Integer("1"));
 	  	query.setStatusReport(new String("1"));
 	  	query.setCompletionApproval(new String("1"));
 	  	query.setReasonsSuspicion(new String("1"));

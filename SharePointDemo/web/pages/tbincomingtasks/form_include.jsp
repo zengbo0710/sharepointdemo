@@ -39,7 +39,10 @@
 			<fmt:message key="ALIAS_STATUS"/>:
 		</td>		
 		<td>
-		<form:input path="status" id="status" cssClass="validate-number" maxlength="12" />
+		<form:select path="status" id="status" cssClass="validate-number">
+			<form:option value="" label="-- please select --"></form:option>
+			<form:options items="${status}"/>
+		</form:select>
 		<font color='red'><form:errors path="status"/></font>
 		</td>
 	</tr>	
@@ -49,7 +52,7 @@
 			<fmt:message key="ALIAS_STATUS_REPORT"/>:
 		</td>		
 		<td>
-		<form:textarea path="statusReport" id="statusReport" cssClass="" maxlength="500" />
+		<form:textarea path="statusReport" id="statusReport" cssClass="" cols="40" rows="5" maxlength="500" />
 		<font color='red'><form:errors path="statusReport"/></font>
 		</td>
 	</tr>	
@@ -69,7 +72,7 @@
 			<fmt:message key="ALIAS_REASONS_SUSPICION"/>:
 		</td>		
 		<td>
-		<form:textarea path="reasonsSuspicion" id="reasonsSuspicion" cssClass="" maxlength="2000" />
+		<form:textarea path="reasonsSuspicion" id="reasonsSuspicion" cols="40" cssClass="" maxlength="2000" />
 		<font color='red'><form:errors path="reasonsSuspicion"/></font>
 		</td>
 	</tr>	

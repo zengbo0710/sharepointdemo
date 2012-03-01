@@ -9,7 +9,10 @@
 			<fmt:message key="ALIAS_TYPE"/>:
 		</td>		
 		<td>
-		<form:input path="type" id="type" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<form:select path="type" id="type" cssClass="validate-number">
+			<form:option value="" label="-- please select --"></form:option>
+			<form:options items="${type}"/>
+		</form:select>
 		<font color='red'><form:errors path="type"/></font>
 		</td>
 	</tr>	

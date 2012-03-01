@@ -96,7 +96,10 @@
 				<td>${page.thisPageFirstElementNumber + status.index}</td>
 				<td><input type="checkbox" name="items" value="${item.id}"></td>
 				
-				<td><c:out value='${item.type}'/>&nbsp;</td>
+				<td>
+					<c:set value='${item.type}' var='key'></c:set>
+					<c:out value="${type[key]}" />&nbsp;
+				</td>
 				<td><c:out value='${item.title}'/>&nbsp;</td>
 				<td><c:out value='${item.descriptions}'/>&nbsp;</td>
 				<td><c:out value='${item.location}'/>&nbsp;</td>

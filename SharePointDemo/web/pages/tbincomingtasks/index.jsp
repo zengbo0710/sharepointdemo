@@ -97,16 +97,19 @@
 			  
 		  </thead>
 		  <tbody>
-		  	  <c:forEach items="${page.result}" var="item" varStatus="status">
+		  	  <c:forEach items="${page.result}" var="item" varStatus="statusInd">
 		  	  
-			  <tr class="${status.count % 2 == 0 ? 'odd' : 'even'}">
-				<td>${page.thisPageFirstElementNumber + status.index}</td>
+			  <tr class="${statusInd.count % 2 == 0 ? 'odd' : 'even'}">
+				<td>${page.thisPageFirstElementNumber + statusInd.index}</td>
 				<td><input type="checkbox" name="items" value="${item.id}"></td>
 				
 				<td><c:out value='${item.action}'/>&nbsp;</td>
 				<td><c:out value='${item.plannedDateString}'/>&nbsp;</td>
 				<td><c:out value='${item.assignedDateString}'/>&nbsp;</td>
-				<td><c:out value='${item.status}'/>&nbsp;</td>
+				<td>
+					<c:set value='${item.status}' var='key'></c:set>
+					<c:out value="${status[key]}" />&nbsp;
+				</td>
 				<td><c:out value='${item.statusReport}'/>&nbsp;</td>
 				<td><c:out value='${item.completionApproval}'/>&nbsp;</td>
 				<td><c:out value='${item.reasonsSuspicion}'/>&nbsp;</td>

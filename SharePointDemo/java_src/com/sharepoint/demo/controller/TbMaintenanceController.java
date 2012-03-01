@@ -48,6 +48,7 @@ import cn.org.rapid_framework.page.impl.*;
 import com.sharepoint.demo.model.*;
 import com.sharepoint.demo.dao.*;
 import com.sharepoint.demo.service.*;
+import com.sharepoint.demo.util.MainConstants;
 import com.sharepoint.demo.vo.query.*;
 
 /**
@@ -85,6 +86,8 @@ public class TbMaintenanceController extends BaseRestSpringController<TbMaintena
 	@ModelAttribute
 	public void init(ModelMap model) {
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
+		model.addAttribute("status", MainConstants.statusMap);
+		model.addAttribute("type", MainConstants.typeMap);
 	}
 	
 	/** 列表 */

@@ -51,7 +51,7 @@ public class TbIncomingTasksQuery extends BaseQuery implements Serializable {
 	private java.util.Date assignedDateBegin;
 	private java.util.Date assignedDateEnd;
 	/** status */
-	private java.lang.Float status;
+	private java.lang.Integer status;
 	/** statusReport */
 	private java.lang.String statusReport;
 	/** completionApproval */
@@ -107,11 +107,11 @@ public class TbIncomingTasksQuery extends BaseQuery implements Serializable {
 		this.assignedDateEnd = value;
 	}
 	
-	public java.lang.Float getStatus() {
+	public java.lang.Integer getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(java.lang.Float value) {
+	public void setStatus(java.lang.Integer value) {
 		this.status = value;
 	}
 	

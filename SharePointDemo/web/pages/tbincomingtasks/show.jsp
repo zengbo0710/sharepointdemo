@@ -28,7 +28,10 @@
 			</tr>
 			<tr>	
 				<td class="tdLabel"><fmt:message key="ALIAS_STATUS" /></td>	
-				<td><c:out value='${tbIncomingTasks.status}'/></td>
+				<td>
+					 <c:set value="${tbIncomingTasks.status}" var="key">  </c:set>
+					 <c:out value="${status[key]}" />
+				</td>
 			</tr>
 			<tr>	
 				<td class="tdLabel"><fmt:message key="ALIAS_STATUS_REPORT" /></td>	

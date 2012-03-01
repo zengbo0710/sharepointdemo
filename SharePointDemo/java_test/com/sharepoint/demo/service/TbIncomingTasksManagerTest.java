@@ -75,7 +75,7 @@ public class TbIncomingTasksManagerTest extends BaseManagerTestCase{
 	  	obj.setAction(new java.lang.String("1"));
 	  	obj.setPlannedDate(new java.util.Date(System.currentTimeMillis()));
 	  	obj.setAssignedDate(new java.util.Date(System.currentTimeMillis()));
-	  	obj.setStatus(new java.lang.Float("1"));
+	  	obj.setStatus(new java.lang.Integer("1"));
 	  	obj.setStatusReport(new java.lang.String("1"));
 	  	obj.setCompletionApproval(new java.lang.String("1"));
 	  	obj.setReasonsSuspicion(new java.lang.String("1"));
