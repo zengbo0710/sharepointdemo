@@ -10,7 +10,7 @@
 <%@ include file="/commons/taglibs.jsp" %>
 
 <rapid:override name="head">
-	<title><%=${className}.TABLE_ALIAS%> 维护</title>
+	<title><%=${className}.TABLE_ALIAS%> <fmt:message key='Maintenance'/></title>
 	
 	<script src="<@jspEl 'ctx'/>/scripts/rest.js" ></script>
 	<link href="<c:url value="/widgets/simpletable/simpletable.css"/>" type="text/css" rel="stylesheet">
@@ -28,13 +28,13 @@
 	<form id="queryForm" name="queryForm" method="get" style="display: inline;">
 	<div class="queryPanel">
 		<fieldset>
-			<legend>搜索</legend>
+			<legend><fmt:message key='Search'/></legend>
 			<table>
 				<#list table.notPkColumns?chunk(4) as row>
 				<tr>	
 					<#list row as column>
 					<#if !column.htmlHidden>	
-					<td class="tdLabel"><%=${className}.ALIAS_${column.constantName}%></td>		
+					<td class="tdLabel"><fmt:message key="<%=ALIAS_${column.constantName}%> /></td>		
 					<td>
 						<#if column.isDateTimeColumn>
 						<input value="<fmt:formatDate value='<@jspEl "query."+column.columnNameLower+'Begin'/>' pattern='<%=${className}.FORMAT_${column.constantName}%>'/>" onclick="WdatePicker({dateFmt:'<%=${className}.FORMAT_${column.constantName}%>'})" id="${column.columnNameLower}Begin" name="${column.columnNameLower}Begin"   />
@@ -50,9 +50,9 @@
 			</table>
 		</fieldset>
 		<div class="handleControl">
-			<input type="submit" class="stdButton" style="width:80px" value="查询" onclick="getReferenceForm(this).action='<@jspEl 'ctx'/>/${classNameLowerCase}'"/>
-			<input type="button" class="stdButton" style="width:80px" value="新增" onclick="window.location = '<@jspEl 'ctx'/>/${classNameLowerCase}/new'"/>
-			<input type="button" class="stdButton" style="width:80px" value="删除" onclick="doRestBatchDelete('<@jspEl 'ctx'/>/${classNameLowerCase}','items',document.forms.queryForm)"/>
+			<input type="submit" class="stdButton" style="width:80px" value="<fmt:message key="Search"/>" onclick="getReferenceForm(this).action='<@jspEl 'ctx'/>/${classNameLowerCase}'"/>
+			<input type="button" class="stdButton" style="width:80px" value="<fmt:message key="Add"/>" onclick="window.location = '<@jspEl 'ctx'/>/${classNameLowerCase}/new'"/>
+			<input type="button" class="stdButton" style="width:80px" value="<fmt:message key="Delete"/>" onclick="doRestBatchDelete('<@jspEl 'ctx'/>/${classNameLowerCase}','items',document.forms.queryForm)"/>
 		<div>
 	
 	</div>
@@ -60,7 +60,7 @@
 	<div class="gridTable">
 	
 		<simpletable:pageToolbar page="<@jspEl 'page'/>">
-		显示在这里是为了提示你如何自定义表头,可修改模板删除此行
+		<!--显示在这里是为了提示你如何自定义表头,可修改模板删除此行-->
 		</simpletable:pageToolbar>
 	
 		<table width="100%"  border="0" cellspacing="0" class="gridBody">
@@ -77,7 +77,7 @@
 				</#if>
 				</#list>
 	
-				<th>操作</th>
+				<th><fmt:message key="Operation"/></th>
 			  </tr>
 			  
 		  </thead>
@@ -102,9 +102,9 @@
 				</#if>
 				</#list>
 				<td>
-					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>">查看</a>&nbsp;&nbsp;
-					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>/edit">修改</a>&nbsp;&nbsp;
-					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>" onclick="doRestDelete(this,'你确认删除?');return false;">删除</a>
+					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>"><fmt:message key="View"/></a>&nbsp;&nbsp;
+					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>/edit"><fmt:message key="Modify"/></a>&nbsp;&nbsp;
+					<a href="<@jspEl 'ctx'/>/${classNameLowerCase}/<@jspEl 'item.'+table.idColumn.columnNameFirstLower/>" onclick="doRestDelete(this,'<fmt:message key="Are_you_sure_to_delete"/>');return false;"><fmt:message key="Delete"/></a>
 				</td>
 			  </tr>
 			  
@@ -113,7 +113,7 @@
 		</table>
 	
 		<simpletable:pageToolbar page="<@jspEl 'page'/>">
-		显示在这里是为了提示你如何自定义表头,可修改模板删除此行
+		<!--显示在这里是为了提示你如何自定义表头,可修改模板删除此行-->
 		</simpletable:pageToolbar>
 		
 	</div>

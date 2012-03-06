@@ -7,18 +7,18 @@
 <%@ include file="/commons/taglibs.jsp" %>
 
 <rapid:override name="head">
-	<title><%=${className}.TABLE_ALIAS%>新增</title>
+	<title><%=${className}.TABLE_ALIAS%> <fmt:message key="Add"/></title>
 </rapid:override>
 
 <rapid:override name="content">
 	<form:form method="post" action="<@jspEl "ctx"/>/${classNameLowerCase}" modelAttribute="${classNameFirstLower}" >
-		<input id="submitButton" name="submitButton" type="submit" value="提交" />
-		<input type="button" value="返回列表" onclick="window.location='<@jspEl "ctx"/>/${classNameLowerCase}'"/>
-		<input type="button" value="后退" onclick="history.back();"/>
+		<input type="button" value="<fmt:message key="Back_to_list"/>" onclick="window.location='<@jspEl "ctx"/>/${classNameLowerCase}'"/>
+		<input type="button" value="<fmt:message key="Back"/>" onclick="history.back();"/>
 		
 		<table class="formTable">
 		<%@ include file="form_include.jsp" %>
 		</table>
+		<input id="submitButton" name="submitButton" type="submit" value="<fmt:message key="Submit"/>" />
 	</form:form>
 	
 	<script>
