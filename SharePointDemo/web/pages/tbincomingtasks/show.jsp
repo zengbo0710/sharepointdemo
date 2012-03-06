@@ -8,8 +8,8 @@
 
 <rapid:override name="content">
 	<form:form modelAttribute="tbincomingtasks"  >
-		<input type="button" value="Back to list" onclick="window.location='${ctx}/tbincomingtasks'"/>
-		<input type="button" value="Back" onclick="history.back();"/>
+		<input type="button" value="<fmt:message key="Back_to_list"/>" onclick="window.location='${ctx}/tbincomingtasks'"/>
+		<input type="button" value="<fmt:message key="Back"/>" onclick="history.back();"/>
 		
 		<input type="hidden" id="id" name="id" value="${tbIncomingTasks.id}"/>
 	
