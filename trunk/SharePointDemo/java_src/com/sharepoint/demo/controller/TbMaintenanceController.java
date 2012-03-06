@@ -113,10 +113,12 @@ public class TbMaintenanceController extends BaseRestSpringController<TbMaintena
 		if (errors.hasErrors()) {
 			return "/tbmaintenance/new";
 		}
+		String uploadFilePath = "";
+		String fileName = "";
 		try {
-			String fileName = uploadFile.getOriginalFilename();  
+			fileName = uploadFile.getOriginalFilename();  
 			InputStream is = uploadFile.getInputStream();
-			String uploadFilePath = MainConstants.getUploadPath(request.getLocalPort());
+			uploadFilePath = MainConstants.getUploadPath(request.getLocalPort());
 			//如果服务器已经存在和上传文件同名的文件，则输出提示信息
 			File tempFile = new File(uploadFilePath + fileName);
 			if (tempFile.exists()) {
@@ -140,6 +142,7 @@ public class TbMaintenanceController extends BaseRestSpringController<TbMaintena
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		tbMaintenance.setLink(uploadFilePath + fileName);
 		tbMaintenanceManager.save(tbMaintenance);
 		Flash.current().success(CREATED_SUCCESS); // 存放在Flash中的数据,在下一次http请求中仍然可以读取数据,error()用于显示错误消息
 		return LIST_ACTION;
