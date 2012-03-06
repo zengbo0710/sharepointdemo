@@ -8,8 +8,6 @@
 
 package com.sharepoint.demo.controller;
 
-import java.util.Map;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,7 +21,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,21 +32,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.org.rapid_framework.page.Page;
 import cn.org.rapid_framework.web.scope.Flash;
 
-import java.util.*;
-
-import javacommon.base.*;
-import javacommon.util.*;
-
-import cn.org.rapid_framework.util.*;
-import cn.org.rapid_framework.web.util.*;
-import cn.org.rapid_framework.page.*;
-import cn.org.rapid_framework.page.impl.*;
-
-import com.sharepoint.demo.model.*;
-import com.sharepoint.demo.dao.*;
-import com.sharepoint.demo.service.*;
+import com.sharepoint.demo.model.TbMaster;
+import com.sharepoint.demo.service.TbMasterManager;
 import com.sharepoint.demo.util.MainConstants;
-import com.sharepoint.demo.vo.query.*;
+import com.sharepoint.demo.vo.query.TbMasterQuery;
 
 /**
  * @author badqiu email:badqiu(a)gmail.com
