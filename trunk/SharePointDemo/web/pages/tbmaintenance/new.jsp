@@ -6,7 +6,7 @@
 </rapid:override>
 
 <rapid:override name="content">
-	<form:form method="post" action="${ctx}/tbmaintenance" modelAttribute="tbMaintenance" >
+	<form:form method="post" action="${ctx}/tbmaintenance" modelAttribute="tbMaintenance"  enctype="multipart/form-data">
 		
 		<input type="button" value="<fmt:message key="Back_to_list"/>" onclick="window.location='${ctx}/tbmaintenance'"/>
 		<input type="button" value="<fmt:message key="Back"/>" onclick="history.back();"/>

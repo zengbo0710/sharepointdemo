@@ -52,7 +52,7 @@
 			<fmt:message key="ALIAS_LINK"/>:
 		</td>		
 		<td>
-		<form:input path="link" id="link" cssClass="" maxlength="500" />
+		<input type="file" name="file" />
 		<font color='red'><form:errors path="link"/></font>
 		</td>
 	</tr>	
