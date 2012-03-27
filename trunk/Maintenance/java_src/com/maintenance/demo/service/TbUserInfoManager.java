@@ -49,4 +49,9 @@ public class TbUserInfoManager extends BaseManager<TbUserInfo,java.lang.Integer>
 		return tbUserInfoDao.findPage(query);
 	}
 	
+	@Transactional(readOnly=true)
+	public TbUserInfo getByUserName(java.lang.String v) {
+		return tbUserInfoDao.getByUserName(v);
+	}	
+	
 }

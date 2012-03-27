@@ -43,6 +43,14 @@
 				<td><c:out value='${tbIncomingTasks.reasonsSuspicion}'/></td>
 			</tr>
 			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></td>	
+				<td><c:out value='${tbIncomingTasks.completionApproval}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%></td>	
+				<td><c:out value='${tbIncomingTasks.reasonsSuspicion}'/></td>
+			</tr>
+			<tr>	
 				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_VERIFIED%></td>	
 				<td><c:out value='${tbIncomingTasks.verified}'/></td>
 			</tr>
@@ -81,6 +89,30 @@
 			<tr>	
 				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_APPROVED%></td>	
 				<td><c:out value='${tbIncomingTasks.approved}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_PERCENTAGE%></td>	
+				<td><c:out value='${tbIncomingTasks.percentage}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_SIGN_TO%></td>	
+				<td><c:out value='${tbIncomingTasks.signTo}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_JOB_ID%></td>	
+				<td><c:out value='${tbIncomingTasks.jobId}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REMARK3%></td>	
+				<td><c:out value='${tbIncomingTasks.remark3}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REMARK4%></td>	
+				<td><c:out value='${tbIncomingTasks.remark4}'/></td>
+			</tr>
+			<tr>	
+				<td class="tdLabel"><%=TbIncomingTasks.ALIAS_PROCESS_TIME%></td>	
+				<td><c:out value='${tbIncomingTasks.processTime}'/></td>
 			</tr>
 		</table>
 	</form:form>

@@ -78,6 +78,18 @@ public class TbIncomingTasksQuery extends BaseQuery implements Serializable {
 	private java.lang.String link;
 	/** approved */
 	private java.lang.Integer approved;
+	/** percentage */
+	private java.lang.Float percentage;
+	/** signTo */
+	private java.lang.Integer signTo;
+	/** jobId */
+	private java.lang.Integer jobId;
+	/** remark3 */
+	private java.lang.String remark3;
+	/** remark4 */
+	private java.lang.String remark4;
+	/** processTime */
+	private java.lang.Integer processTime;
 
 	public java.lang.Integer getId() {
 		return this.id;
@@ -237,6 +249,54 @@ public class TbIncomingTasksQuery extends BaseQuery implements Serializable {
 	
 	public void setApproved(java.lang.Integer value) {
 		this.approved = value;
+	}
+	
+	public java.lang.Float getPercentage() {
+		return this.percentage;
+	}
+	
+	public void setPercentage(java.lang.Float value) {
+		this.percentage = value;
+	}
+	
+	public java.lang.Integer getSignTo() {
+		return this.signTo;
+	}
+	
+	public void setSignTo(java.lang.Integer value) {
+		this.signTo = value;
+	}
+	
+	public java.lang.Integer getJobId() {
+		return this.jobId;
+	}
+	
+	public void setJobId(java.lang.Integer value) {
+		this.jobId = value;
+	}
+	
+	public java.lang.String getRemark3() {
+		return this.remark3;
+	}
+	
+	public void setRemark3(java.lang.String value) {
+		this.remark3 = value;
+	}
+	
+	public java.lang.String getRemark4() {
+		return this.remark4;
+	}
+	
+	public void setRemark4(java.lang.String value) {
+		this.remark4 = value;
+	}
+	
+	public java.lang.Integer getProcessTime() {
+		return this.processTime;
+	}
+	
+	public void setProcessTime(java.lang.Integer value) {
+		this.processTime = value;
 	}
 	
 

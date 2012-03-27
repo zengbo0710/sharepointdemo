@@ -61,7 +61,7 @@ public class TbUserInfo extends BaseEntity implements java.io.Serializable{
     /**
      * userName       db_column: user_name 
      */ 	
-	@Length(max=45)
+	@NotBlank @Length(max=45)
 	private java.lang.String userName;
     /**
      * password       db_column: password 
@@ -77,7 +77,7 @@ public class TbUserInfo extends BaseEntity implements java.io.Serializable{
      * role       db_column: role 
      */ 	
 	
-	private java.lang.Float role;
+	private java.lang.Integer role;
 	//columns END
 	
 	//注意： spring_jdbc的MetadataCreateUtils.fromTable(Entity.class) 可以读取JPA annotation的标注信息
@@ -125,11 +125,11 @@ public class TbUserInfo extends BaseEntity implements java.io.Serializable{
 		this.description = value;
 	}
 	
-	public java.lang.Float getRole() {
+	public java.lang.Integer getRole() {
 		return this.role;
 	}
 	
-	public void setRole(java.lang.Float value) {
+	public void setRole(java.lang.Integer value) {
 		this.role = value;
 	}
 	

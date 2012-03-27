@@ -86,7 +86,7 @@ public class TbUserInfoController extends BaseRestSpringController<TbUserInfo,ja
 	public void init(ModelMap model) {
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
 	}
-	
+
 	/** Login  */
 	@RequestMapping(method=RequestMethod.POST,value="/login")
 	public String login(ModelMap model,@Valid TbUserInfo tbUserInfo,BindingResult errors,HttpServletRequest request,HttpServletResponse response) throws Exception {
