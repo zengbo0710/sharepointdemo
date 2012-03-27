@@ -40,7 +40,7 @@
 					</td>
 					<td class="tdLabel"><%=TbUserInfo.ALIAS_ROLE%></td>		
 					<td>
-						<input value="${query.role}" id="role" name="role" maxlength="12"  class="validate-number "/>
+						<input value="${query.role}" id="role" name="role" maxlength="10"  class="validate-integer max-value-2147483647"/>
 					</td>
 				</tr>	
 			</table>

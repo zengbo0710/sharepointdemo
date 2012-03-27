@@ -10,34 +10,52 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class MainConstants {
-	public static final String NOT_STARTED_KEY = "1";
-	public static final String IN_PROGRESS_KEY = "2";
-	public static final String COMPLETED_KEY = "3";
-	public static final String DEFERRED_KEY = "4";
-	public static final String WAITING_ON_SOMEONE_ELSE_KEY = "5";
-	public static final String APPROVED_KEY = "1";
-	public static final String REJECT_KEY = "2";
+	public static final Long NOT_STARTED_KEY = 1l;
+	public static final Long IN_PROGRESS_KEY = 2l;
+	public static final Long COMPLETED_KEY = 3l;
+	public static final Long DEFERRED_KEY = 4l;
+	public static final Long WAITING_ON_SOMEONE_ELSE_KEY = 5l;
+	
+	public static final Long ADMIN_KEY = 1l;
+	public static final Long BOSS_KEY = 2l;
+	public static final Long SUPERVISOR_KEY = 3l;
+	public static final Long TECHNICIAN_KEY = 4l;
+	
+	public static final Long APPROVED_KEY = 1l;
+	public static final Long REJECT_KEY = 2l;
+	
+	public static final Long TYPE1_KEY = 1l;
+	public static final Long TYPE2_KEY = 2l;
+	
 	public static final String NOT_STARTED_VALUE = "Not Started";
 	public static final String IN_PROGRESS_VALUE = "In Progress";
 	public static final String COMPLETED_VALUE = "Completed";
 	public static final String DEFERRED_VALUE = "Deferred";
+	
 	public static final String APPROVED_VALUE = "approved";
 	public static final String REJECT_VALUE = "Reject";
+	
 	public static final String WAITING_ON_SOMEONE_ELSE_VALUE = "Waiting on someone else";
 
-	public static final String TYPE1_KEY = "1";
-	public static final String TYPE2_KEY = "2";
+	
 	public static final String TYPE1_VALUE = "One";
 	public static final String TYPE2_VALUE = "Two";
 	
-	public static final String LOCAL_PATH = "/SharePointDemo/upload/";
+	public static final String ADMIN_VALUE = "Admin";
+	public static final String BOSS_VALUE = "Boss";
+	public static final String SUPERVISOR_VALUE = "Supervisor";
+	public static final String TECHNICIAN_VALUE = "Technician";
+	
+	public static final String LOCAL_PATH = "/Maintenance/upload/";
 
-	public static Map<String, String> statusMap = new LinkedHashMap<String, String>();
-	public static Map<String, String> typeMap = new LinkedHashMap<String, String>();
-	public static Map<String, String> verifiedMap = new LinkedHashMap<String, String>();
-	public static Map<String, String> approvedMap = new LinkedHashMap<String, String>();
-	public static Map<String, String> rankMap = new LinkedHashMap<String, String>();
-	public static Map<String, String> createByMap = new LinkedHashMap<String, String>();
+	public static Map<Long, String> statusMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> typeMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> verifiedMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> approvedMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> rankMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> createByMap = new LinkedHashMap<Long, String>();
+	public static Map<Long, String> roleMap = new LinkedHashMap<Long, String>();
+	
 
 	static {
 		statusMap.put(NOT_STARTED_KEY, NOT_STARTED_VALUE);
@@ -60,6 +78,11 @@ public class MainConstants {
 		
 		createByMap.put(TYPE1_KEY, TYPE1_VALUE);
 		createByMap.put(TYPE2_KEY, TYPE2_VALUE);
+		
+		roleMap.put(ADMIN_KEY, ADMIN_VALUE);
+		roleMap.put(BOSS_KEY, BOSS_VALUE);
+		roleMap.put(SUPERVISOR_KEY, SUPERVISOR_VALUE);
+		roleMap.put(TECHNICIAN_KEY, TECHNICIAN_VALUE);
 	}
 
 	/*

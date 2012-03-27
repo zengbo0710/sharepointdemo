@@ -49,7 +49,7 @@ public class TbUserInfoQuery extends BaseQuery implements Serializable {
 	/** description */
 	private java.lang.String description;
 	/** role */
-	private java.lang.Float role;
+	private java.lang.Integer role;
 
 	public java.lang.Integer getId() {
 		return this.id;
@@ -83,11 +83,11 @@ public class TbUserInfoQuery extends BaseQuery implements Serializable {
 		this.description = value;
 	}
 	
-	public java.lang.Float getRole() {
+	public java.lang.Integer getRole() {
 		return this.role;
 	}
 	
-	public void setRole(java.lang.Float value) {
+	public void setRole(java.lang.Integer value) {
 		this.role = value;
 	}
 	

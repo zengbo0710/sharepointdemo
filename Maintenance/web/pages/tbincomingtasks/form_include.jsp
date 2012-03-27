@@ -41,7 +41,7 @@
 		<td>
 		<form:select path="status" id="status" cssClass="validate-number">
 			<form:option value="" label="-- please select --"></form:option>
-			<form:options items="${status}"/>
+			<form:options items="${statusMap}"/>
 		</form:select>
 		<font color='red'><form:errors path="status"/></font>
 		</td>
@@ -79,12 +79,30 @@
 	
 	<tr>	
 		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%>:
+		</td>		
+		<td>
+		<form:input path="completionApproval" id="completionApproval" cssClass="" maxlength="45" />
+		<font color='red'><form:errors path="completionApproval"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%>:
+		</td>		
+		<td>
+		<form:input path="reasonsSuspicion" id="reasonsSuspicion" cssClass="" maxlength="200" />
+		<font color='red'><form:errors path="reasonsSuspicion"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_VERIFIED%>:
 		</td>		
 		<td>
 		<form:select path="verified" id="verified" cssClass="validate-number">
 			<form:option value="" label="-- please select --"></form:option>
-			<form:options items="${verified}"/>
+			<form:options items="${verifiedMap}"/>
 		</form:select>
 		<font color='red'><form:errors path="verified"/></font>
 		</td>
@@ -117,7 +135,7 @@
 		<td>
 		<form:select path="createBy" id="createBy" cssClass="validate-number">
 			<form:option value="" label="-- please select --"></form:option>
-			<form:options items="${createBy}"/>
+			<form:options items="${createByMap}"/>
 		</form:select>
 		<font color='red'><form:errors path="createBy"/></font>
 		</td>
@@ -130,7 +148,7 @@
 		<td>
 		<form:select path="rank" id="rank" cssClass="validate-number">
 			<form:option value="" label="-- please select --"></form:option>
-			<form:options items="${rank}"/>
+			<form:options items="${rankMap}"/>
 		</form:select>
 		<font color='red'><form:errors path="rank"/></font>
 		</td>
@@ -183,10 +201,64 @@
 		<td>
 		<form:select path="approved" id="approved" cssClass="validate-number">
 			<form:option value="" label="-- please select --"></form:option>
-			<form:options items="${approved}"/>
+			<form:options items="${approvedMap}"/>
 		</form:select>
 		<font color='red'><form:errors path="approved"/></font>
 		</td>
 	</tr>	
 	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_PERCENTAGE%>:
+		</td>		
+		<td>
+		<form:input path="percentage" id="percentage" cssClass="validate-number " maxlength="12" />
+		<font color='red'><form:errors path="percentage"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_SIGN_TO%>:
+		</td>		
+		<td>
+		<form:input path="signTo" id="signTo" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<font color='red'><form:errors path="signTo"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_JOB_ID%>:
+		</td>		
+		<td>
+		<form:input path="jobId" id="jobId" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<font color='red'><form:errors path="jobId"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_REMARK3%>:
+		</td>		
+		<td>
+		<form:input path="remark3" id="remark3" cssClass="" maxlength="2000" />
+		<font color='red'><form:errors path="remark3"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_REMARK4%>:
+		</td>		
+		<td>
+		<form:input path="remark4" id="remark4" cssClass="" maxlength="2000" />
+		<font color='red'><form:errors path="remark4"/></font>
+		</td>
+	</tr>	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_PROCESS_TIME%>:
+		</td>		
+		<td>
+		<form:input path="processTime" id="processTime" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<font color='red'><form:errors path="processTime"/></font>
+		</td>
+	</tr>	
 		

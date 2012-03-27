@@ -6,10 +6,10 @@
 
 	<tr>	
 		<td class="tdLabel">
-			<%=TbUserInfo.ALIAS_USER_NAME%>:
+			<span class="required">*</span><%=TbUserInfo.ALIAS_USER_NAME%>:
 		</td>		
 		<td>
-		<form:input path="userName" id="userName" cssClass="" maxlength="45" />
+		<form:input path="userName" id="userName" cssClass="required " maxlength="45" />
 		<font color='red'><form:errors path="userName"/></font>
 		</td>
 	</tr>	
@@ -39,7 +39,7 @@
 			<%=TbUserInfo.ALIAS_ROLE%>:
 		</td>		
 		<td>
-		<form:input path="role" id="role" cssClass="validate-number " maxlength="12" />
+		<form:input path="role" id="role" cssClass="validate-integer max-value-2147483647" maxlength="10" />
 		<font color='red'><form:errors path="role"/></font>
 		</td>
 	</tr>	

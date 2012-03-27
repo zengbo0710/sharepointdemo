@@ -72,8 +72,10 @@ public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.l
 			  	+ "/~ and t.status_report = {statusReport} ~/"
 			  	+ "/~ and t.completion_approval = {completionApproval} ~/"
 			  	+ "/~ and t.reasons_suspicion = {reasonsSuspicion} ~/"
+			  	+ "/~ and t.completionApproval = {completionApproval} ~/"
+			  	+ "/~ and t.reasonsSuspicion = {reasonsSuspicion} ~/"
 			  	+ "/~ and t.verified = {verified} ~/"
-			  	+ "/~ and t.Instructions = {instructions} ~/"
+			  	+ "/~ and t.instructions = {instructions} ~/"
 			  	+ "/~ and t.report = {report} ~/"
 			  	+ "/~ and t.create_by = {createBy} ~/"
 			  	+ "/~ and t.rank = {rank} ~/"
@@ -82,6 +84,12 @@ public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.l
 			  	+ "/~ and t.remark = {remark} ~/"
 			  	+ "/~ and t.link = {link} ~/"
 			  	+ "/~ and t.approved = {approved} ~/"
+			  	+ "/~ and t.percentage = {percentage} ~/"
+			  	+ "/~ and t.sign_to = {signTo} ~/"
+			  	+ "/~ and t.job_id = {jobId} ~/"
+			  	+ "/~ and t.remark3 = {remark3} ~/"
+			  	+ "/~ and t.remark4 = {remark4} ~/"
+			  	+ "/~ and t.process_time = {processTime} ~/"
 				+ "/~ order by [sortColumns] ~/";
 		
 		//生成sql2的原因是为了不喜欢使用xsqlbuilder的同学，请修改生成器模板，删除本段的生成
@@ -116,11 +124,17 @@ public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.l
 		if(isNotEmpty(query.getReasonsSuspicion())) {
             sql2.append(" and t.reasons_suspicion = :reasonsSuspicion ");
         }
+		if(isNotEmpty(query.getCompletionApproval())) {
+            sql2.append(" and t.completionApproval = :completionApproval ");
+        }
+		if(isNotEmpty(query.getReasonsSuspicion())) {
+            sql2.append(" and t.reasonsSuspicion = :reasonsSuspicion ");
+        }
 		if(isNotEmpty(query.getVerified())) {
             sql2.append(" and t.verified = :verified ");
         }
 		if(isNotEmpty(query.getInstructions())) {
-            sql2.append(" and t.Instructions = :instructions ");
+            sql2.append(" and t.instructions = :instructions ");
         }
 		if(isNotEmpty(query.getReport())) {
             sql2.append(" and t.report = :report ");
@@ -145,6 +159,24 @@ public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.l
         }
 		if(isNotEmpty(query.getApproved())) {
             sql2.append(" and t.approved = :approved ");
+        }
+		if(isNotEmpty(query.getPercentage())) {
+            sql2.append(" and t.percentage = :percentage ");
+        }
+		if(isNotEmpty(query.getSignTo())) {
+            sql2.append(" and t.sign_to = :signTo ");
+        }
+		if(isNotEmpty(query.getJobId())) {
+            sql2.append(" and t.job_id = :jobId ");
+        }
+		if(isNotEmpty(query.getRemark3())) {
+            sql2.append(" and t.remark3 = :remark3 ");
+        }
+		if(isNotEmpty(query.getRemark4())) {
+            sql2.append(" and t.remark4 = :remark4 ");
+        }
+		if(isNotEmpty(query.getProcessTime())) {
+            sql2.append(" and t.process_time = :processTime ");
         }
 		if(isNotEmpty(query.getSortColumns())) {
             sql2.append(" order by :sortColumns ");

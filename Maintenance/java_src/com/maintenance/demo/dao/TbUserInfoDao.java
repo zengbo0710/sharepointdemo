@@ -93,5 +93,10 @@ public class TbUserInfoDao extends BaseSpringJdbcDao<TbUserInfo,java.lang.Intege
 		return pageQuery(sql,query);
 	}
 	
+	public TbUserInfo getByUserName(java.lang.String v) {
+		String sql = "select " + getSqlGenerator().getColumnsSql() + " from tb_user_info where userName=?";
+		return (TbUserInfo)DataAccessUtils.singleResult(getSimpleJdbcTemplate().queryForList(sql, ParameterizedBeanPropertyRowMapper.newInstance(getEntityClass()), v));
+	}	
+	
 
 }

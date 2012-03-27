@@ -61,6 +61,12 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 	public static final String ALIAS_REMARK = "remark";
 	public static final String ALIAS_LINK = "link";
 	public static final String ALIAS_APPROVED = "approved";
+	public static final String ALIAS_PERCENTAGE = "percentage";
+	public static final String ALIAS_SIGN_TO = "signTo";
+	public static final String ALIAS_JOB_ID = "jobId";
+	public static final String ALIAS_REMARK3 = "remark3";
+	public static final String ALIAS_REMARK4 = "remark4";
+	public static final String ALIAS_PROCESS_TIME = "processTime";
 	
 	//date formats
 	public static final String FORMAT_PLANNED_DATE = DATE_FORMAT;
@@ -98,15 +104,16 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
      */ 	
 	@Length(max=500)
 	private java.lang.String statusReport;
+   
     /**
-     * completionApproval       db_column: completion_approval 
+     * completionApproval       db_column: completionApproval 
      */ 	
 	@Length(max=45)
 	private java.lang.String completionApproval;
     /**
-     * reasonsSuspicion       db_column: reasons_suspicion 
+     * reasonsSuspicion       db_column: reasonsSuspicion 
      */ 	
-	@Length(max=2000)
+	@Length(max=200)
 	private java.lang.String reasonsSuspicion;
     /**
      * verified       db_column: verified 
@@ -114,7 +121,7 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 	
 	private java.lang.Integer verified;
     /**
-     * instructions       db_column: Instructions 
+     * instructions       db_column: instructions 
      */ 	
 	@Length(max=2000)
 	private java.lang.String instructions;
@@ -158,6 +165,36 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
      */ 	
 	
 	private java.lang.Integer approved;
+    /**
+     * percentage       db_column: percentage 
+     */ 	
+	
+	private java.lang.Float percentage;
+    /**
+     * signTo       db_column: sign_to 
+     */ 	
+	
+	private java.lang.Integer signTo;
+    /**
+     * jobId       db_column: job_id 
+     */ 	
+	
+	private java.lang.Integer jobId;
+    /**
+     * remark3       db_column: remark3 
+     */ 	
+	@Length(max=2000)
+	private java.lang.String remark3;
+    /**
+     * remark4       db_column: remark4 
+     */ 	
+	@Length(max=2000)
+	private java.lang.String remark4;
+    /**
+     * processTime       db_column: process_time 
+     */ 	
+	
+	private java.lang.Integer processTime;
 	//columns END
 	
 	//注意： spring_jdbc的MetadataCreateUtils.fromTable(Entity.class) 可以读取JPA annotation的标注信息
@@ -333,6 +370,54 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 		this.approved = value;
 	}
 	
+	public java.lang.Float getPercentage() {
+		return this.percentage;
+	}
+	
+	public void setPercentage(java.lang.Float value) {
+		this.percentage = value;
+	}
+	
+	public java.lang.Integer getSignTo() {
+		return this.signTo;
+	}
+	
+	public void setSignTo(java.lang.Integer value) {
+		this.signTo = value;
+	}
+	
+	public java.lang.Integer getJobId() {
+		return this.jobId;
+	}
+	
+	public void setJobId(java.lang.Integer value) {
+		this.jobId = value;
+	}
+	
+	public java.lang.String getRemark3() {
+		return this.remark3;
+	}
+	
+	public void setRemark3(java.lang.String value) {
+		this.remark3 = value;
+	}
+	
+	public java.lang.String getRemark4() {
+		return this.remark4;
+	}
+	
+	public void setRemark4(java.lang.String value) {
+		this.remark4 = value;
+	}
+	
+	public java.lang.Integer getProcessTime() {
+		return this.processTime;
+	}
+	
+	public void setProcessTime(java.lang.Integer value) {
+		this.processTime = value;
+	}
+	
 
 	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -342,6 +427,8 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 			.append("AssignedDate",getAssignedDate())
 			.append("Status",getStatus())
 			.append("StatusReport",getStatusReport())
+			.append("CompletionApproval",getCompletionApproval())
+			.append("ReasonsSuspicion",getReasonsSuspicion())
 			.append("CompletionApproval",getCompletionApproval())
 			.append("ReasonsSuspicion",getReasonsSuspicion())
 			.append("Verified",getVerified())
@@ -354,6 +441,12 @@ public class TbIncomingTasks extends BaseEntity implements java.io.Serializable{
 			.append("Remark",getRemark())
 			.append("Link",getLink())
 			.append("Approved",getApproved())
+			.append("Percentage",getPercentage())
+			.append("SignTo",getSignTo())
+			.append("JobId",getJobId())
+			.append("Remark3",getRemark3())
+			.append("Remark4",getRemark4())
+			.append("ProcessTime",getProcessTime())
 			.toString();
 	}
 	

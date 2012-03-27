@@ -8,6 +8,8 @@
 
 package com.maintenance.demo.controller;
 
+import java.util.Map;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,6 +23,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,10 +35,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.org.rapid_framework.page.Page;
 import cn.org.rapid_framework.web.scope.Flash;
 
-import com.maintenance.demo.model.TbIncomingTasks;
-import com.maintenance.demo.service.TbIncomingTasksManager;
+import java.util.*;
+
+import javacommon.base.*;
+import javacommon.util.*;
+
+import cn.org.rapid_framework.util.*;
+import cn.org.rapid_framework.web.util.*;
+import cn.org.rapid_framework.page.*;
+import cn.org.rapid_framework.page.impl.*;
+
+import com.maintenance.demo.model.*;
+import com.maintenance.demo.dao.*;
+import com.maintenance.demo.service.*;
 import com.maintenance.demo.util.MainConstants;
-import com.maintenance.demo.vo.query.TbIncomingTasksQuery;
+import com.maintenance.demo.vo.query.*;
 
 /**
  * @author badqiu email:badqiu(a)gmail.com
@@ -71,11 +85,13 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	 */
 	@ModelAttribute
 	public void init(ModelMap model) {
-		model.addAttribute("statusMap", MainConstants.statusMap);
-		model.addAttribute("verifiedMap", MainConstants.typeMap);
-		model.addAttribute("approvedMap", MainConstants.approvedMap);
-		model.addAttribute("rankMap", MainConstants.rankMap);
-		model.addAttribute("createByMap", MainConstants.createByMap);
+		model.addAttribute("statusMap",MainConstants.statusMap);
+		model.addAttribute("typeMap",MainConstants.typeMap);
+		model.addAttribute("verifiedMap",MainConstants.verifiedMap);
+		model.addAttribute("approvedMap",MainConstants.approvedMap);
+		model.addAttribute("rankMap",MainConstants.rankMap);
+		model.addAttribute("createByMap",MainConstants.createByMap);
+		model.addAttribute("roleMap",MainConstants.roleMap);
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
 	}
 	
@@ -83,6 +99,7 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	@RequestMapping
 	public String index(ModelMap model,TbIncomingTasksQuery query,HttpServletRequest request,HttpServletResponse response) {
 		Page page = this.tbIncomingTasksManager.findPage(query);
+		
 		model.addAllAttributes(toModelMap(page, query));
 		return "/tbincomingtasks/index";
 	}
