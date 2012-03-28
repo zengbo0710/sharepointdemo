@@ -15,6 +15,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -27,6 +28,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.incrementer.AbstractSequenceMaxValueIncrementer;
 import org.springframework.jdbc.support.incrementer.DB2SequenceMaxValueIncrementer;
 import org.springframework.jdbc.support.incrementer.OracleSequenceMaxValueIncrementer;
+
+import com.maintenance.demo.model.TbUserInfo;
 
 import cn.org.rapid_framework.jdbc.dialect.Dialect;
 import cn.org.rapid_framework.jdbc.sqlgenerator.CacheSqlGenerator;

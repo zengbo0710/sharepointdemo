@@ -7,23 +7,20 @@
 
 package com.maintenance.demo.service;
 
+import java.util.List;
+
+import javacommon.base.BaseHibernateDao;
+import javacommon.base.BaseManager;
+import javacommon.base.EntityDao;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import cn.org.rapid_framework.page.Page;
 
-import javacommon.base.*;
-import javacommon.util.*;
-
-import cn.org.rapid_framework.util.*;
-import cn.org.rapid_framework.web.util.*;
-import cn.org.rapid_framework.page.*;
-import cn.org.rapid_framework.page.impl.*;
-
-import com.maintenance.demo.model.*;
-import com.maintenance.demo.dao.*;
-import com.maintenance.demo.service.*;
-import com.maintenance.demo.vo.query.*;
+import com.maintenance.demo.dao.TbUserInfoDao;
+import com.maintenance.demo.model.TbUserInfo;
+import com.maintenance.demo.vo.query.TbUserInfoQuery;
 
 /**
  * @author badqiu email:badqiu(a)gmail.com
@@ -53,5 +50,13 @@ public class TbUserInfoManager extends BaseManager<TbUserInfo,java.lang.Integer>
 	public TbUserInfo getByUserName(java.lang.String v) {
 		return tbUserInfoDao.getByUserName(v);
 	}	
+	
+	public TbUserInfo getByNameAndPwd(String userName){
+		TbUserInfo tbUserInfoList = tbUserInfoDao.getByUserName(userName);
+		if(tbUserInfoList!=null){
+			return tbUserInfoList;
+		}
+		return null;
+	}
 	
 }

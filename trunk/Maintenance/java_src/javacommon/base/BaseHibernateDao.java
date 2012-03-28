@@ -31,6 +31,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.impl.SessionFactoryImpl;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -205,6 +206,16 @@ public abstract class BaseHibernateDao<E,PK extends Serializable> extends Hibern
 			save(it.next());
 		}
 	}
+	
+	public List<E> find(String queryString, Object value) throws DataAccessException {  
+        List<E> find = (List<E>) getHibernateTemplate().find(queryString, value);  
+        return find;  
+    }  
+  
+    public List<E> find(String queryString, Object[] values) throws DataAccessException {  
+        List<E> find = (List<E>) getHibernateTemplate().find(queryString, values);  
+        return find;  
+    }  
 
 	public void deleteAll(Collection entities) {
 		getHibernateTemplate().deleteAll(entities);

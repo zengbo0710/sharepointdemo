@@ -10,6 +10,7 @@ package com.maintenance.demo.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
@@ -94,9 +95,8 @@ public class TbUserInfoDao extends BaseSpringJdbcDao<TbUserInfo,java.lang.Intege
 	}
 	
 	public TbUserInfo getByUserName(java.lang.String v) {
-		String sql = "select " + getSqlGenerator().getColumnsSql() + " from tb_user_info where userName=?";
-		return (TbUserInfo)DataAccessUtils.singleResult(getSimpleJdbcTemplate().queryForList(sql, ParameterizedBeanPropertyRowMapper.newInstance(getEntityClass()), v));
-	}	
-	
+		String sql = "select " + getSqlGenerator().getColumnsSql("t") + " from tb_user_info t where user_name='"+v+"'";
+		return (TbUserInfo)DataAccessUtils.singleResult(getSimpleJdbcTemplate().query(sql, ParameterizedBeanPropertyRowMapper.newInstance(TbUserInfo.class)));
+	}
 
 }

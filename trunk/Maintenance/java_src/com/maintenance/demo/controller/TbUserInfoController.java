@@ -90,7 +90,13 @@ public class TbUserInfoController extends BaseRestSpringController<TbUserInfo,ja
 	/** Login  */
 	@RequestMapping(method=RequestMethod.POST,value="/login")
 	public String login(ModelMap model,@Valid TbUserInfo tbUserInfo,BindingResult errors,HttpServletRequest request,HttpServletResponse response) throws Exception {
-		return "redirect:/index.jsp";
+		TbUserInfo tbUserInfo2 = tbUserInfoManager.getByNameAndPwd(tbUserInfo.getUserName());
+		if(tbUserInfo2!=null&&tbUserInfo2.getPassword().equals(tbUserInfo.getPassword())){
+			model.addAttribute("tbUserInfo",tbUserInfo2);
+			request.getSession().setAttribute("userInfo",tbUserInfo2);
+			return "redirect:/index.jsp";
+		}
+		return "redirect:/login.jsp";
 	}
 	
 	/** 列表 */

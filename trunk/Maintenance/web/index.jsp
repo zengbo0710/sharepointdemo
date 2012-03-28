@@ -132,7 +132,7 @@ $(document).ready(function() {
    <span id="main_title">
 		Maintenance
    </span>
-   <div id="personal">Current User Admin | Role šAdmin | <a href="#">Log out</a></div>
+   <div id="personal">Current User ${sessionScope.userInfo.userName} | Role š${sessionScope.userInfo.role} | <a href="#">Log out</a></div>
   </div>
 
   <div id="nav">
