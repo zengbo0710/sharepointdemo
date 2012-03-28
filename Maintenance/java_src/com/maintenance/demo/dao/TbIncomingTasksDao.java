@@ -7,29 +7,19 @@
 
 package com.maintenance.demo.dao;
 
-import java.io.Serializable;
+import static cn.org.rapid_framework.util.ObjectUtils.isNotEmpty;
+
 import java.util.List;
 
-import org.springframework.dao.support.DataAccessUtils;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
+import javacommon.base.BaseSpringJdbcDao;
+
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-import static cn.org.rapid_framework.util.ObjectUtils.*;
 
-import java.util.*;
+import cn.org.rapid_framework.page.Page;
 
-import javacommon.base.*;
-import javacommon.util.*;
-
-import cn.org.rapid_framework.util.*;
-import cn.org.rapid_framework.web.util.*;
-import cn.org.rapid_framework.page.*;
-import cn.org.rapid_framework.page.impl.*;
-
-import com.maintenance.demo.model.*;
-import com.maintenance.demo.dao.*;
-import com.maintenance.demo.service.*;
-import com.maintenance.demo.vo.query.*;
+import com.maintenance.demo.model.TbIncomingTasks;
+import com.maintenance.demo.vo.query.TbIncomingTasksQuery;
 
 /**
  * @author badqiu email:badqiu(a)gmail.com
@@ -38,7 +28,7 @@ import com.maintenance.demo.vo.query.*;
  */
 
 @Repository
-public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.lang.Integer>{
+public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.lang.Integer> {
 	
 	//注意: getSqlGenerator()可以生成基本的：增删改查sql语句, 通过这个父类已经封装了增删改查操作
     // sqlgenerator参考: http://code.google.com/p/rapid-framework/wiki/rapid_sqlgenerator
@@ -184,6 +174,5 @@ public class TbIncomingTasksDao extends BaseSpringJdbcDao<TbIncomingTasks,java.l
 		
 		return pageQuery(sql,query);
 	}
-	
 
 }

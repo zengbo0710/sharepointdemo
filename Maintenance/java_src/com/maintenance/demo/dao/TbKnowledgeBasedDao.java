@@ -10,6 +10,7 @@ package com.maintenance.demo.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
@@ -100,6 +101,4 @@ public class TbKnowledgeBasedDao extends BaseSpringJdbcDao<TbKnowledgeBased,java
 		
 		return pageQuery(sql,query);
 	}
-	
-
 }
