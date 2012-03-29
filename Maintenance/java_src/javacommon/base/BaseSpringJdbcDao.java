@@ -282,6 +282,13 @@ public abstract class BaseSpringJdbcDao<E,PK extends Serializable> extends JdbcD
 		return getSimpleJdbcTemplate().query(sql, ParameterizedBeanPropertyRowMapper.newInstance(getEntityClass()));
 	}
 	
+	public List findAll(Class object) {
+		Table table = MetadataCreateUtils.createTable(object);
+		SqlGenerator sqlGenerator = new CacheSqlGenerator(new SpringNamedSqlGenerator(table));
+		String sql = "SELECT "+sqlGenerator.getColumnsSql()+" FROM " + sqlGenerator.getTable().getTableName();
+		return getSimpleJdbcTemplate().query(sql, ParameterizedBeanPropertyRowMapper.newInstance(object));
+	}
+	
 	/**
 	 * 得到生成增删改查的sql生成工具
 	 * @return

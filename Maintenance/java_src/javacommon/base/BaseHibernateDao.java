@@ -160,6 +160,10 @@ public abstract class BaseHibernateDao<E,PK extends Serializable> extends Hibern
 	public List<E> findAll() {
 		return getHibernateTemplate().loadAll(getEntityClass());
 	}
+	
+	public List<Object> findAll(Class entity) {
+		return getHibernateTemplate().loadAll(entity);
+	}
 
 	public E getById(PK id) {
 		return (E)getHibernateTemplate().get(getEntityClass(),id);

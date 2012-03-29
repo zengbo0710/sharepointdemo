@@ -29,4 +29,6 @@ public interface EntityDao <E,PK extends Serializable>{
 	
 	public List<E> findAll() throws DataAccessException;
 	
+	public List<Object> findAll(Class object) throws DataAccessException;
+	
 }

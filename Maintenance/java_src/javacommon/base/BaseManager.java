@@ -27,6 +27,11 @@ public abstract class BaseManager <E,PK extends Serializable>{
 		return getEntityDao().findAll();
 	}
 	
+	@Transactional(readOnly=true)
+	public List<Object> findAll(Class entity) throws DataAccessException{
+		return getEntityDao().findAll(entity);
+	}
+	
 	/** 根据id检查是否插入或是更新数据 */
 	public void saveOrUpdate(E entity) throws DataAccessException{
 		getEntityDao().saveOrUpdate(entity);

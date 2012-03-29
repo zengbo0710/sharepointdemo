@@ -31,7 +31,9 @@
 	  <ul>
 		<li><a href="${ctx}/tbincomingtasks" target="rightFrame">Incoming Task</a></li>
 		<li><a href="${ctx}/tbknowledgebased" target="rightFrame">Knowledge based</a></li>
+		<c:if test="${sessionScope.userInfo.role<=1}">
 		<li><a href="${ctx}/tbuserinfo" target="rightFrame">User Info</a></li>
+		</c:if>
 	  </ul>
 </div>
 

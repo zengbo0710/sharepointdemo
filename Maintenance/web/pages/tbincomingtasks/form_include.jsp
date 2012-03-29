@@ -6,13 +6,14 @@
 
 	<tr>	
 		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_ACTION%>:
+			<%=TbIncomingTasks.ALIAS_JOB_ID%>:
 		</td>		
 		<td>
-		<form:input path="action" id="action" cssClass="" maxlength="100" />
-		<font color='red'><form:errors path="action"/></font>
+		<form:input path="jobId" id="jobId" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<font color='red'><form:errors path="jobId"/></font>
 		</td>
 	</tr>	
+	
 	
 	<tr>	
 		<td class="tdLabel">
@@ -57,25 +58,7 @@
 		</td>
 	</tr>	
 	
-	<tr>	
-		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%>:
-		</td>		
-		<td>
-		<form:input path="completionApproval" id="completionApproval" cssClass="" maxlength="45" />
-		<font color='red'><form:errors path="completionApproval"/></font>
-		</td>
-	</tr>	
 	
-	<tr>	
-		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%>:
-		</td>		
-		<td>
-		<form:input path="reasonsSuspicion" id="reasonsSuspicion" cssClass="" maxlength="2000" />
-		<font color='red'><form:errors path="reasonsSuspicion"/></font>
-		</td>
-	</tr>	
 	
 	<tr>	
 		<td class="tdLabel">
@@ -154,15 +137,7 @@
 		</td>
 	</tr>	
 	
-	<tr>	
-		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_SIGNATURE%>:
-		</td>		
-		<td>
-		<form:input path="signature" id="signature" cssClass="" maxlength="200" />
-		<font color='red'><form:errors path="signature"/></font>
-		</td>
-	</tr>	
+	
 	
 	<tr>	
 		<td class="tdLabel">
@@ -215,25 +190,32 @@
 		<form:input path="percentage" id="percentage" cssClass="validate-number " maxlength="12" />
 		<font color='red'><form:errors path="percentage"/></font>
 		</td>
-	</tr>	
+	</tr>
+	<c:if test="${sessionScope.userInfo.role<=2}">	
 	<tr>	
 		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_SIGN_TO%>:
 		</td>		
 		<td>
-		<form:input path="signTo" id="signTo" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<form:select path="signTo" id="signTo" cssClass="validate-number">
+			<form:option value="" label="-- please select --"></form:option>
+			<form:options items="${userMap}"/>
+		</form:select>
 		<font color='red'><form:errors path="signTo"/></font>
 		</td>
 	</tr>	
+	</c:if>
+	
 	<tr>	
 		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_JOB_ID%>:
+			<%=TbIncomingTasks.ALIAS_PROCESS_TIME%>:
 		</td>		
 		<td>
-		<form:input path="jobId" id="jobId" cssClass="validate-integer max-value-2147483647" maxlength="10" />
-		<font color='red'><form:errors path="jobId"/></font>
+		<form:input path="processTime" id="processTime" cssClass="validate-integer max-value-2147483647" maxlength="10" />
+		<font color='red'><form:errors path="processTime"/></font>
 		</td>
-	</tr>	
+	</tr>
+	<c:if test="${sessionScope.userInfo.role==1}">
 	<tr>	
 		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_REMARK3%>:
@@ -251,14 +233,43 @@
 		<form:input path="remark4" id="remark4" cssClass="" maxlength="2000" />
 		<font color='red'><form:errors path="remark4"/></font>
 		</td>
+	</tr>
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_ACTION%>:
+		</td>		
+		<td>
+		<form:input path="action" id="action" cssClass="" maxlength="100" />
+		<font color='red'><form:errors path="action"/></font>
+		</td>
 	</tr>	
 	<tr>	
 		<td class="tdLabel">
-			<%=TbIncomingTasks.ALIAS_PROCESS_TIME%>:
+			<%=TbIncomingTasks.ALIAS_SIGNATURE%>:
 		</td>		
 		<td>
-		<form:input path="processTime" id="processTime" cssClass="validate-integer max-value-2147483647" maxlength="10" />
-		<font color='red'><form:errors path="processTime"/></font>
+		<form:input path="signature" id="signature" cssClass="" maxlength="200" />
+		<font color='red'><form:errors path="signature"/></font>
 		</td>
 	</tr>	
+		<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%>:
+		</td>		
+		<td>
+		<form:input path="completionApproval" id="completionApproval" cssClass="" maxlength="45" />
+		<font color='red'><form:errors path="completionApproval"/></font>
+		</td>
+	</tr>	
+	
+	<tr>	
+		<td class="tdLabel">
+			<%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%>:
+		</td>		
+		<td>
+		<form:input path="reasonsSuspicion" id="reasonsSuspicion" cssClass="" maxlength="2000" />
+		<font color='red'><form:errors path="reasonsSuspicion"/></font>
+		</td>
+	</tr>	
+	</c:if>	
 		

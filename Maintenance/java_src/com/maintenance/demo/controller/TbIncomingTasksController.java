@@ -8,10 +8,11 @@
 
 package com.maintenance.demo.controller;
 
-import java.util.Map;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import javacommon.base.BaseRestSpringController;
 
@@ -23,7 +24,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,21 +35,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.org.rapid_framework.page.Page;
 import cn.org.rapid_framework.web.scope.Flash;
 
-import java.util.*;
-
-import javacommon.base.*;
-import javacommon.util.*;
-
-import cn.org.rapid_framework.util.*;
-import cn.org.rapid_framework.web.util.*;
-import cn.org.rapid_framework.page.*;
-import cn.org.rapid_framework.page.impl.*;
-
-import com.maintenance.demo.model.*;
-import com.maintenance.demo.dao.*;
-import com.maintenance.demo.service.*;
+import com.maintenance.demo.model.TbIncomingTasks;
+import com.maintenance.demo.model.TbUserInfo;
+import com.maintenance.demo.service.TbIncomingTasksManager;
 import com.maintenance.demo.util.MainConstants;
-import com.maintenance.demo.vo.query.*;
+import com.maintenance.demo.vo.query.TbIncomingTasksQuery;
 
 /**
  * @author badqiu email:badqiu(a)gmail.com
@@ -98,8 +88,11 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	/** 列表 */
 	@RequestMapping
 	public String index(ModelMap model,TbIncomingTasksQuery query,HttpServletRequest request,HttpServletResponse response) {
+		TbUserInfo userInfo = (TbUserInfo)request.getSession().getAttribute("userInfo");
+		if(userInfo.getRole()>2){
+			query.setSignTo(userInfo.getId());
+		}
 		Page page = this.tbIncomingTasksManager.findPage(query);
-		
 		model.addAllAttributes(toModelMap(page, query));
 		return "/tbincomingtasks/index";
 	}
@@ -115,6 +108,13 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	/** 进入新增 */
 	@RequestMapping(value="/new")
 	public String _new(ModelMap model,TbIncomingTasks tbIncomingTasks,HttpServletRequest request,HttpServletResponse response) throws Exception {
+		List<Object> userlist = tbIncomingTasksManager.findAll(TbUserInfo.class);
+		Map<Integer, String> userMap = new LinkedHashMap<Integer, String>();
+		for (int i = 0; i < userlist.size(); i++) {
+			TbUserInfo userInfo = (TbUserInfo)userlist.get(i);
+			userMap.put(userInfo.getId(), userInfo.getUserName());
+		}
+		model.addAttribute("userMap",userMap);
 		model.addAttribute("tbIncomingTasks",tbIncomingTasks);
 		return "/tbincomingtasks/new";
 	}
