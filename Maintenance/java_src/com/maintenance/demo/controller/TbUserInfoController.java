@@ -48,6 +48,7 @@ import cn.org.rapid_framework.page.impl.*;
 import com.maintenance.demo.model.*;
 import com.maintenance.demo.dao.*;
 import com.maintenance.demo.service.*;
+import com.maintenance.demo.util.MainConstants;
 import com.maintenance.demo.vo.query.*;
 
 /**
@@ -84,6 +85,8 @@ public class TbUserInfoController extends BaseRestSpringController<TbUserInfo,ja
 	 */
 	@ModelAttribute
 	public void init(ModelMap model) {
+		model.addAttribute("roleMap",MainConstants.roleMap);
+		model.addAttribute("roleMap",MainConstants.roleMap);
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
 	}
 

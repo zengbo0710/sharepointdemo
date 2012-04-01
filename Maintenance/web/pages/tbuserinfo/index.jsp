@@ -84,7 +84,10 @@
 				<td><c:out value='${item.userName}'/>&nbsp;</td>
 				<td><c:out value='${item.password}'/>&nbsp;</td>
 				<td><c:out value='${item.description}'/>&nbsp;</td>
-				<td><c:out value='${item.role}'/>&nbsp;</td>
+				<td>
+					<c:set value='${item.role}' var='key'/>
+					<c:out value='${roleMap[key+0]}' />&nbsp;	
+				</td>
 				<td>
 					<a href="${ctx}/tbuserinfo/${item.id}"><fmt:message key="View"/></a>&nbsp;&nbsp;
 					<a href="${ctx}/tbuserinfo/${item.id}/edit"><fmt:message key="Modify"/></a>&nbsp;&nbsp;

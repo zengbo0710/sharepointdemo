@@ -1,0 +1,30 @@
+A.top {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #606060;
+	FONT-FAMILY:  Arial, Tahoma, Verdana, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+A.top:visited {
+	COLOR: #000A5E;
+}
+A.top:active {
+	COLOR: #001BFF;
+}
+A.top:hover {
+	COLOR: #001BFF;
+}
+td {
+	FONT-SIZE: 13px;
+	COLOR: #202020;
+	FONT-FAMILY:  Arial, Tahoma, Verdana, Helvetica, sans-serif;
+}
+.caption	{
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 18px;
+	COLOR: #000000;
+	PADDING-RIGHT: 118px;
+}
+td.butts{
+	FONT-SIZE: 10px;
+}

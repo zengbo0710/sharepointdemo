@@ -7,13 +7,13 @@
 
 <rapid:override name="content">
 	<form:form method="put" action="${ctx}/tbincomingtasks/${tbIncomingTasks.id}" modelAttribute="tbIncomingTasks">
-		<input id="submitButton" name="submitButton" type="submit" value="<fmt:message key="Submit"/>" />
+		
 		<input type="button" value="<fmt:message key="Back_to_list"/>" onclick="window.location='${ctx}/tbincomingtasks'"/>
 		<input type="button" value="<fmt:message key="Back"/>" onclick="history.back();"/>
-		
 		<table class="formTable">
 		<%@ include file="form_include.jsp" %>
 		</table>
+		<input id="submitButton" name="submitButton" type="submit" value="<fmt:message key="Submit"/>" />
 	</form:form>
 	
 	<script>

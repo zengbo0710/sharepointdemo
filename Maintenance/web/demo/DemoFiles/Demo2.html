@@ -1,0 +1,212 @@
+<html>
+	<head>
+		<title></title>
+		<link href="Demo2_files/default.css" rel="stylesheet" type="text/css">
+		<script id="actions" language="JavaScript" src="Demo2_files/actions.js" type="text/javascript"></script>
+	</head>
+<body bgcolor="#EDEDED" leftmargin="5" topmargin="5" marginheight="5" marginwidth="5">
+	<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0" id="Table1">
+	<tr>
+	<td colspan="6">
+		<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0" id="Table2">
+		<tr>
+		<td align="left"><img src="Demo2_files/company_label.gif"></td>
+		<td align="center" width="100%" class="caption"></td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	<tr>
+	<td><img src="Demo2_files/corner_lt.gif" height="12" width="12"></td>
+	<td colspan="4" width="100%" background="Demo2_files/corner_t.gif"></td>
+	<td><img src="Demo2_files/corner_rt.gif" height="12" width="12"></td>
+	</tr>
+	<tr height="100%">
+	<td background="Demo2_files/corner_l.gif"></td>
+	<td colspan="4" bgcolor="#FFFFFF">
+<!--rh-object-begin-->
+<object id="ev3de"
+type="application/rh"
+border="0"
+width="100%"
+height="100%">
+	<param name="BackStyle" value="0" />
+	<param name="FillColor" value="16777215" />
+	<div align="center">
+If you see this text, Deep View ActiveX control is not installed or<br />
+not initialized. Please download and install it. Use the following link:<br />
+<a href="http://www.righthemisphere.com/products/deepview/downloads/DeepView.cab">http://www.righthemisphere.com/products/deepview/downloads/DeepView.cab</a><br />
+If this error message persists, check your security settings<br />
+(ActiveX must be allowed) or use another WEB browser.<br />
+Using Microsoft Internet Explorer is prefered.<br />
+	</div>
+</object>
+<!--rh-object-end-->
+	</td>
+	<td background="Demo2_files/corner_r.gif"></td>
+	</tr>
+	<tr>
+	<td><img src="Demo2_files/corner_lb.gif" height="12" width="12"></td>
+	<td colspan="4" width="100%" background="Demo2_files/corner_b.gif"></td>
+	<td><img src="Demo2_files/corner_rb.gif" height="12" width="12"></td>
+	</tr>
+	<tr>
+	<td><img src="Demo2_files/corner_lt.gif" height="12" width="12"></td>
+	<td width="34%" background="Demo2_files/corner_t.gif"></td>
+	<td><img src="Demo2_files/corner_rt.gif" height="12" width="12"></td>
+	<td><img src="Demo2_files/corner_lt.gif" height="12" width="12"></td>
+	<td width="66%" background="Demo2_files/corner_t.gif"></td>
+	<td><img src="Demo2_files/corner_rt.gif" height="12" width="12"></td>
+	</tr>
+	<tr height="110">
+	<td background="Demo2_files/corner_l.gif"><img src="Demo2_files/spacer.gif" width="1" height="116"></td>
+	<td bgcolor="#FFFFFF" align="left" valign="top">
+		<table border="0" width="100%" height="110" id="Table5" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="100%" style="padding-left:5px;">Procedures</td>
+		</tr>
+        	<tr height="100">
+		<td valign="top" width="50%" style="padding-left:5px; padding-right:5px;">
+			<select name="l_procs" a_multiple size="2"
+			OnChange="CtrlProcedureChange(this.value, document.getElementById('c_play_proc').checked); return false;"
+			style="width:100%; height:100px;"
+			id="l_procs">
+			</select>
+		</td>
+		</tr>
+		<tr>
+		<td height="36" style="padding-left:12px;" valign="center">
+			<input name="c_play_proc" id="c_play_proc" type="checkbox" checked>Play procedure after loading steps
+		</td>
+		</tr>
+		</table>
+	</td>
+	<td background="Demo2_files/corner_r.gif"><img src="Demo2_files/spacer.gif" width="1" height="116"></td>
+	<td background="Demo2_files/corner_l.gif"><img src="Demo2_files/spacer.gif" width="1" height="116"></td>
+	<td bgcolor="#FFFFFF" align="left" valign="top">
+		<table border="0" width="100%" height="110" id="Table5" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="50%" style="padding-left:5px;">Steps</td>
+		<td style="padding-left:5px; padding-right:5px;">&nbsp;</td>
+		<td width="50%" style="padding-right:5px;">Description</td>
+		</tr>
+        	<tr height="100">
+		<td valign="top" width="50%" style="padding-left:5px;">
+			<select name="l_steps" a_multiple size="2"
+			OnChange="CtrlStepsChange(this.value); return false;"
+			style="width:100%; height:100px;"
+			id="l_steps">
+			</select>
+		</td>
+		<td style="padding-left:5px; padding-right:5px;">&nbsp;</td>
+		<td align="left" valign="top" width="50%" style="padding-right:5px;">
+			<textarea style="width:100%; height:95px;" contentEditable="false" class="desc" value="" id="d_step_desc" name="d_step_desc">
+			</textarea>
+		</td>
+		</tr>
+		<tr>
+		<td align="center">
+			<table border="0" width="100" cellpadding="0" cellspacing="0" id="Table3">
+			<tr bgcolor="#FFFFFF">
+			<td align="center">
+				<a href="#" OnClick="PlayAllSteps(true); return false;"><img
+				border="0" width="142" height="36"
+				title="Play all steps from current procedure"
+				OnMouseOver="this.src='Demo2_files/b_butt_a_step_h.gif'; return false;"
+				OnMouseDown="this.src='Demo2_files/b_butt_a_step_c.gif'; return false;"
+				OnMouseUp="this.src='Demo2_files/b_butt_a_step_h.gif'; return false;"
+				OnMouseOut="this.src='Demo2_files/b_butt_a_step_s.gif'; return false;"
+				src="Demo2_files/b_butt_a_step_s.gif"></a></td>
+			<td>&nbsp;&nbsp;</td>
+				<td align="center">
+				<a href="#" OnClick="ResetSteps(true); return false;"><img
+				border="0" width="142" height="36"
+				title="Rewind all steps to beginning"
+				OnMouseOver="this.src='Demo2_files/b_butt_reset_h.gif'; return false;"
+				OnMouseDown="this.src='Demo2_files/b_butt_reset_c.gif'; return false;"
+				OnMouseUp="this.src='Demo2_files/b_butt_reset_h.gif'; return false;"
+				OnMouseOut="this.src='Demo2_files/b_butt_reset_s.gif'; return false;"
+				src="Demo2_files/b_butt_reset_s.gif"></a></td>
+			</tr>
+			</table>
+
+		</td>
+		<td></td>
+		<td align="center">
+			<table border="0" width="100" cellpadding="0" cellspacing="0" id="Table3">
+			<tr bgcolor="#FFFFFF">
+			<td align="center">
+				<a href="#" OnClick="PlayCurrStep(); return false;"><img
+				border="0" width="36" height="36"
+				title="Play current step"
+				OnMouseOver="this.src='Demo2_files/s_butt_play_h.gif'; return false;"
+				OnMouseDown="this.src='Demo2_files/s_butt_play_c.gif'; return false;"
+				OnMouseUp="this.src='Demo2_files/s_butt_play_h.gif'; return false;"
+				OnMouseOut="this.src='Demo2_files/s_butt_play_s.gif'; return false;"
+				src="Demo2_files/s_butt_play_s.gif"></a></td>
+			<td>&nbsp;&nbsp;</td>
+			<td align="center">
+				<a href="#" OnClick="PauseCurrStep(); return false;"><img
+				border="0" width="36" height="36"
+				title="Pause current step"
+				OnMouseOver="this.src='Demo2_files/s_butt_pause_h.gif'; return false;"
+				OnMouseDown="this.src='Demo2_files/s_butt_pause_c.gif'; return false;"
+				OnMouseUp="this.src='Demo2_files/s_butt_pause_h.gif'; return false;"
+				OnMouseOut="this.src='Demo2_files/s_butt_pause_s.gif'; return false;"
+				src="Demo2_files/s_butt_pause_s.gif"></a></td>
+			<td>&nbsp;&nbsp;</td>
+			<td align="center">
+				<a href="#" OnClick="RewindCurrStep(); return false;"><img
+				border="0" width="36" height="36"
+				title="Rewind current step to beginning"
+				OnMouseOver="this.src='Demo2_files/s_butt_rev_h.gif'; return false;"
+				OnMouseDown="this.src='Demo2_files/s_butt_rev_c.gif'; return false;"
+				OnMouseUp="this.src='Demo2_files/s_butt_rev_h.gif'; return false;"
+				OnMouseOut="this.src='Demo2_files/s_butt_rev_s.gif'; return false;"
+				src="Demo2_files/s_butt_rev_s.gif"></a></td>
+			</tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+	</td>
+	<td background="Demo2_files/corner_r.gif"></td>
+	</tr>
+	<tr>
+	<td valign="top"><img src="Demo2_files/corner_lb.gif" height="12" width="12"></td>
+	<td background="Demo2_files/corner_b.gif" style="background-repeat: repeat-x;"></td>
+	<td valign="top"><img src="Demo2_files/corner_rb.gif" height="12" width="12"></td>
+	<td valign="top"><img src="Demo2_files/corner_lb.gif" height="12" width="12"></td>
+	<td background="Demo2_files/corner_b.gif" style="background-repeat: repeat-x;"></td>
+	<td valign="top"><img src="Demo2_files/corner_rb.gif" height="12" width="12"></td>
+	</tr>
+	</table>
+</body>
+<script language="javascript">
+//<!--
+//=================================================
+
+function SceneLoaded(res)
+{
+	InitSteps(
+		document.getElementById("l_steps"),
+		null,
+		document.getElementById("d_step_desc")
+	);
+	InitProcedures(
+		document.getElementById("l_procs"),
+		document.getElementById("l_steps")
+	);
+	CtrlProcedureChange(0, false);
+}
+
+//=================================================
+
+var dv_ctrl = document.getElementById("ev3de");
+dv_ctrl.SceneLoaded = SceneLoaded;
+dv_ctrl.FileName = 'Demo2_files/Demo2.rh';
+
+//=================================================
+//-->
+</script>
+</html>

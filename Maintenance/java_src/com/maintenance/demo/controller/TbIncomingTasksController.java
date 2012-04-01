@@ -75,13 +75,20 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	 */
 	@ModelAttribute
 	public void init(ModelMap model) {
+		model.addAttribute("role1Map",MainConstants.roleMap);
 		model.addAttribute("statusMap",MainConstants.statusMap);
 		model.addAttribute("typeMap",MainConstants.typeMap);
 		model.addAttribute("verifiedMap",MainConstants.verifiedMap);
 		model.addAttribute("approvedMap",MainConstants.approvedMap);
 		model.addAttribute("rankMap",MainConstants.rankMap);
 		model.addAttribute("createByMap",MainConstants.createByMap);
-		model.addAttribute("roleMap",MainConstants.roleMap);
+		List<Object> userlist = tbIncomingTasksManager.findAll(TbUserInfo.class);
+		Map<Integer, String> userMap = new LinkedHashMap<Integer, String>();
+		for (int i = 0; i < userlist.size(); i++) {
+			TbUserInfo userInfo = (TbUserInfo)userlist.get(i);
+			userMap.put(userInfo.getId(), userInfo.getUserName());
+		}
+		model.addAttribute("userMap",userMap);
 		model.put("now", new java.sql.Timestamp(System.currentTimeMillis()));
 	}
 	
@@ -108,13 +115,6 @@ public class TbIncomingTasksController extends BaseRestSpringController<TbIncomi
 	/** 进入新增 */
 	@RequestMapping(value="/new")
 	public String _new(ModelMap model,TbIncomingTasks tbIncomingTasks,HttpServletRequest request,HttpServletResponse response) throws Exception {
-		List<Object> userlist = tbIncomingTasksManager.findAll(TbUserInfo.class);
-		Map<Integer, String> userMap = new LinkedHashMap<Integer, String>();
-		for (int i = 0; i < userlist.size(); i++) {
-			TbUserInfo userInfo = (TbUserInfo)userlist.get(i);
-			userMap.put(userInfo.getId(), userInfo.getUserName());
-		}
-		model.addAttribute("userMap",userMap);
 		model.addAttribute("tbIncomingTasks",tbIncomingTasks);
 		return "/tbincomingtasks/new";
 	}

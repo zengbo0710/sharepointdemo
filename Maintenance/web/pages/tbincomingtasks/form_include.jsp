@@ -187,11 +187,11 @@
 			<%=TbIncomingTasks.ALIAS_PERCENTAGE%>:
 		</td>		
 		<td>
-		<form:input path="percentage" id="percentage" cssClass="validate-number " maxlength="12" />
+		<form:input path="percentage" id="percentage" cssClass="validate-number " maxlength="12" />%
 		<font color='red'><form:errors path="percentage"/></font>
 		</td>
 	</tr>
-	<c:if test="${sessionScope.userInfo.role<=2}">	
+	<c:if test="${sessionScope.userInfo.role<=4}">	
 	<tr>	
 		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_SIGN_TO%>:
@@ -206,6 +206,8 @@
 	</tr>	
 	</c:if>
 	
+	
+	<c:if test="${sessionScope.userInfo.role==1}">
 	<tr>	
 		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_PROCESS_TIME%>:
@@ -215,7 +217,6 @@
 		<font color='red'><form:errors path="processTime"/></font>
 		</td>
 	</tr>
-	<c:if test="${sessionScope.userInfo.role==1}">
 	<tr>	
 		<td class="tdLabel">
 			<%=TbIncomingTasks.ALIAS_REMARK3%>:

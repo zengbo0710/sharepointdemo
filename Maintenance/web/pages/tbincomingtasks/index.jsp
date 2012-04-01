@@ -16,6 +16,10 @@
 		$(document).ready(function() {
 			window.simpleTable = new SimpleTable('queryForm',${page.thisPageNumber},${page.pageSize},'${pageRequest.sortColumns}');
 		});
+		
+		function downloadReport(url) {
+			window.open(url,'Download');
+		}
 	</script>
 </rapid:override>
 
@@ -45,28 +49,11 @@
 						<input value="${query.status}" id="status" name="status" maxlength="10"  class="validate-integer max-value-2147483647"/>
 					</td>
 				</tr>	
+				
 				<tr>	
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_STATUS_REPORT%></td>		
+					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_CREATE_BY%></td>		
 					<td>
-						<input value="${query.statusReport}" id="statusReport" name="statusReport" maxlength="500"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></td>		
-					<td>
-						<input value="${query.completionApproval}" id="completionApproval" name="completionApproval" maxlength="45"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%></td>		
-					<td>
-						<input value="${query.reasonsSuspicion}" id="reasonsSuspicion" name="reasonsSuspicion" maxlength="2000"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></td>		
-					<td>
-						<input value="${query.completionApproval}" id="completionApproval" name="completionApproval" maxlength="45"  class=""/>
-					</td>
-				</tr>	
-				<tr>	
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%></td>		
-					<td>
-						<input value="${query.reasonsSuspicion}" id="reasonsSuspicion" name="reasonsSuspicion" maxlength="200"  class=""/>
+						<input value="${query.createBy}" id="createBy" name="createBy" maxlength="10"  class="validate-integer max-value-2147483647"/>
 					</td>
 					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_VERIFIED%></td>		
 					<td>
@@ -81,42 +68,7 @@
 						<input value="${query.report}" id="report" name="report" maxlength="2000"  class=""/>
 					</td>
 				</tr>	
-				<tr>	
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_CREATE_BY%></td>		
-					<td>
-						<input value="${query.createBy}" id="createBy" name="createBy" maxlength="10"  class="validate-integer max-value-2147483647"/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_RANK%></td>		
-					<td>
-						<input value="${query.rank}" id="rank" name="rank" maxlength="10"  class="validate-integer max-value-2147483647"/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_SIGNATURE%></td>		
-					<td>
-						<input value="${query.signature}" id="signature" name="signature" maxlength="200"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REMARK2%></td>		
-					<td>
-						<input value="${query.remark2}" id="remark2" name="remark2" maxlength="2000"  class=""/>
-					</td>
-				</tr>	
-				<tr>	
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_REMARK%></td>		
-					<td>
-						<input value="${query.remark}" id="remark" name="remark" maxlength="2000"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_LINK%></td>		
-					<td>
-						<input value="${query.link}" id="link" name="link" maxlength="200"  class=""/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_APPROVED%></td>		
-					<td>
-						<input value="${query.approved}" id="approved" name="approved" maxlength="10"  class="validate-integer max-value-2147483647"/>
-					</td>
-					<td class="tdLabel"><%=TbIncomingTasks.ALIAS_PERCENTAGE%></td>		
-					<td>
-						<input value="${query.percentage}" id="percentage" name="percentage" maxlength="12"  class="validate-number "/>
-					</td>
-				</tr>	
+				
 				
 			</table>
 		</fieldset>
@@ -153,11 +105,11 @@
 				<th sortColumn="signature" ><%=TbIncomingTasks.ALIAS_SIGNATURE%></th>
 				<th sortColumn="remark2" ><%=TbIncomingTasks.ALIAS_REMARK2%></th>
 				<th sortColumn="remark" ><%=TbIncomingTasks.ALIAS_REMARK%></th>
-				<th sortColumn="link" ><%=TbIncomingTasks.ALIAS_LINK%></th>
 				<th sortColumn="percentage" ><%=TbIncomingTasks.ALIAS_PERCENTAGE%></th>
 				<th sortColumn="sign_to" ><%=TbIncomingTasks.ALIAS_SIGN_TO%></th>
 				
 				<c:if test="${sessionScope.userInfo.role<=1}">
+				<th sortColumn="link" ><%=TbIncomingTasks.ALIAS_LINK%></th>
 				<th sortColumn="create_by" ><%=TbIncomingTasks.ALIAS_CREATE_BY%></th>
 				<th sortColumn="action" ><%=TbIncomingTasks.ALIAS_ACTION%></th>
 				<th sortColumn="completion_approval" ><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></th>
@@ -178,6 +130,7 @@
 			  <tr class="${status.count % 2 == 0 ? 'odd' : 'even'}">
 				<td>${page.thisPageFirstElementNumber + status.index}</td>
 				<td><input type="checkbox" name="items" value="${item.id}"></td>
+				<td><a href="demo/demo.html"><c:out value='${item.jobId}'/></a>&nbsp;</td>
 				<td><c:out value='${item.plannedDateString}'/>&nbsp;</td>
 				<td><c:out value='${item.assignedDateString}'/>&nbsp;</td>
 				<td>
@@ -192,20 +145,23 @@
 					<c:out value='${verifiedMap[key+0]}' />&nbsp;
 				</td>
 				<td><c:out value='${item.instructions}'/>&nbsp;</td>
-				<td><c:out value='${item.report}'/>&nbsp;</td>
+				<td><a href="javascript:downloadReport('${item.link}')"><c:out value='${item.report}'/></a>&nbsp;</td>
 				<td>
-					<c:set value='${rank.verified}' var='key'/>
+					<c:set value='${item.verified}' var='key'/>
 					<c:out value='${rankMap[key+0]}' />&nbsp;
 				</td>
 				<td><c:out value='${item.signature}'/>&nbsp;</td>
 				<td><c:out value='${item.remark2}'/>&nbsp;</td>
 				<td><c:out value='${item.remark}'/>&nbsp;</td>
-				<td><c:out value='${item.link}'/>&nbsp;</td>
-				<td><c:out value='${item.percentage}'/>&nbsp;</td>
-				<td><c:out value='${item.signTo}'/>&nbsp;</td>
-				<td><c:out value='${item.jobId}'/>&nbsp;</td>
+				<td><c:out value='${item.percentage}'/>%&nbsp;</td>
+				<td>
+					<c:set value='${item.signTo}' var='key'/>
+					<c:out value='${userMap[key+0]}' />&nbsp;
+				</td>
+				
 				
 				<c:if test="${sessionScope.userInfo.role<=1}">
+				<td><c:out value='${item.link}'/>&nbsp;</td>
 				<td>
 					<c:set value='${item.createBy}' var='key'/>
 					<c:out value='${createByMap[key+0]}' />&nbsp;
