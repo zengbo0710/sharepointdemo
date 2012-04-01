@@ -192,7 +192,7 @@ function demo1() {
     function  changeClick(num,name){
     	var number = document.getElementById("step"+num);
     	number.innerHTML=name;
-    	if(num==6){
+    	if(num==7){
     		var number = document.getElementById("button1");
     		number.disabled='';
     	}else {
@@ -300,6 +300,7 @@ function demo1() {
 						</td>
 						<td>
 							<a href="DemoFiles/Demo1.html" onclick="window.open('DemoFiles/Demo1.html'); return false;" target="_blank">Step 1 instruction</a>
+							
 						</td>
 						<td id="step1">
 							<a href="javascript:changeClick('1','Completed')">Completed</a> / <a href="javascript:changeClick('1','Not completed')">Not completed</a> / <a href="javascript:changeClick('1','pending')">Pending</a>
@@ -314,11 +315,11 @@ function demo1() {
 						<td id="name1i" style="display:none">
 							
 						</td>
-						<td>
+						<td id="img1">
 							<a href="javascript:goRun('1')"><img src="image001.png"/></a>
 						</td>
 						<td>
-							<input type="textarea" name="remark" id="remark4"/><br>
+							<input type="textarea" name="remark" id="remark" onclick="reload('1')"/><br>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -327,6 +328,7 @@ function demo1() {
 						</td>
 						<td>
 							<a href="DemoFiles/Demo2.html" onclick="window.open('DemoFiles/Demo2.html'); return false;" target="_blank">Step 2 instruction</a>
+							
 						</td>
 						<td id="step2" style="display:none">
 							<a href="javascript:changeClick('2','Completed')">Completed</a> / <a href="javascript:changeClick('2','Not completed')">Not completed</a> / <a href="javascript:changeClick('2','pending')">Pending</a>
@@ -334,14 +336,18 @@ function demo1() {
 						<td id="step2i">
 							Completed / Not completed / Pending
 						</td>
-						<td>
-							N.A.
+						<td  id="name2t">
+							<input type="text" name="name2" id="name2"/><br>
+							<input type="text" name="nric2" id="nric2"/>
+						</td>
+						<td id="name2i" style="display:none">
+							
+						</td>
+						<td id="img2">
+							<a href="javascript:goRun('2')"><img src="image002.png"/></a>
 						</td>
 						<td>
-							N.A.
-						</td>
-						<td>
-							<input type="textarea" name="remark" id="remark4"/><br>
+							<input type="textarea" name="remark" id="remark" onclick="reload('2')"/><br>
 						</td>
 					</tr>
 					<tr>
@@ -350,6 +356,7 @@ function demo1() {
 						</td>
 						<td>
 							<a href="DemoFiles/Demo3.html" onclick="window.open('DemoFiles/Demo3.html'); return false;" target="_blank">Step 3 instruction</a>
+						
 						</td>
 						<td id="step3" style="display:none">
 							<a href="javascript:changeClick('3','Completed')">Completed</a> / <a href="javascript:changeClick('3','Not completed')">Not completed</a> / <a href="javascript:changeClick('3','pending')">Pending</a>
@@ -357,14 +364,18 @@ function demo1() {
 						<td id="step3i">
 							Completed / Not completed / Pending
 						</td>
-						<td>
-							N.A.
+						<td  id="name3t">
+							<input type="text" name="name3" id="name3"/><br>
+							<input type="text" name="nric3" id="nric3"/>
+						</td>
+						<td id="name3i" style="display:none">
+							
+						</td>
+						<td id="img3">
+							<a href="javascript:goRun('3')"><img src="image003.png"/></a>
 						</td>
 						<td>
-							N.A.
-						</td>
-						<td>
-							<input type="textarea" name="remark" id="remark4"/><br>
+							<input type="textarea" name="remark" id="remark" onclick="reload('3')"/><br>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -374,20 +385,24 @@ function demo1() {
 						<td>
 							<a href="DemoFiles/Demo4.html" onclick="window.open('DemoFiles/Demo4.html'); return false;" target="_blank">Step 4 instruction</a>
 						</td>
-						<td id="step4"  style="display:none">
+						<td id="step4" style="display:none">
 							<a href="javascript:changeClick('4','Completed')">Completed</a> / <a href="javascript:changeClick('4','Not completed')">Not completed</a> / <a href="javascript:changeClick('4','pending')">Pending</a>
 						</td>
 						<td id="step4i">
 							Completed / Not completed / Pending
 						</td>
-						<td>
-							N.A.
+						<td  id="name4t">
+							<input type="text" name="name4" id="name4"/><br>
+							<input type="text" name="nric4" id="nric4"/>
+						</td>
+						<td id="name4i" style="display:none">
+							
+						</td>
+						<td id="img4">
+							<a href="javascript:goRun('4')"><img src="image004.png"/></a>
 						</td>
 						<td>
-							N.A.
-						</td>
-						<td>
-							<input type="textarea" name="remark4" id="remark4"/><br>
+							<input type="textarea" name="remark" id="remark" onclick="reload('4')"/><br>
 						</td>
 					</tr>
 					<tr>
@@ -407,14 +422,41 @@ function demo1() {
 							<input type="text" name="name5" id="name5"/><br>
 							<input type="text" name="nric5" id="nric5"/>
 						</td>
-						<td id="name5i"  style="display:none">
+						<td id="name5i" style="display:none">
 							
 						</td>
-						<td>
+						<td id="img5">
 							<a href="javascript:goRun('5')"><img src="image005.png"/></a>
 						</td>
 						<td>
-							<input type="text" name="remark5" id="remark5"/><br>
+							<input type="text" name="remark5" id="remark5" onclick="reload('5')"/><br>
+						</td>
+					</tr>
+					<tr class="odd">
+						<td>
+							6
+						</td>
+						<td>
+							<a href="DemoFiles/Train2.html" onclick="window.open('DemoFiles/Train2.html'); return false;" target="_blank">Step 6 instruction</a>
+						</td>
+						<td id="step6" style="display:none">
+							<a href="javascript:changeClick('6','Completed')">Completed</a> / <a href="javascript:changeClick('6','Not completed')">Not completed</a> / <a href="javascript:changeClick('6','pending')">Pending</a>
+						</td>
+						<td id="step6i">
+							Completed / Not completed / Pending
+						</td>
+						<td  id="name6t">
+							<input type="text" name="name6" id="name6"/><br>
+							<input type="text" name="nric6" id="nric6"/>
+						</td>
+						<td id="name6i" style="display:none">
+							
+						</td>
+						<td id="img6">
+							<a href="javascript:goRun('6')"><img src="image006.png"/></a>
+						</td>
+						<td>
+							<input type="text" name="remark6" id="remark6" onclick="reload('6')"/><br>
 						</td>
 					</tr>
 				</table>
@@ -431,24 +473,27 @@ function demo1() {
 					<td>
 						1
 					</td>
-					<td id="step6" style="display:none">
-							<a href="javascript:changeClick('6','Completed')">Completed</a> / <a href="javascript:changeClick('6','Not completed')">Not completed</a> / <a href="javascript:changeClick('6','pending')">Pending</a>
+					<td>
+						Testing 1
 					</td>
-					<td id="step6i">
+					<td id="step7" style="display:none">
+							<a href="javascript:changeClick('7','Completed')">Completed</a> / <a href="javascript:changeClick('7','Not completed')">Not completed</a> / <a href="javascript:changeClick('7','pending')">Pending</a>
+						</td>
+						<td id="step7i">
 							Completed / Not completed / Pending
 						</td>
-					<td  id="name6t">
-							<input type="text" name="name6" id="name6"/><br>
-							<input type="text" name="nric6" id="nric6"/>
+						<td  id="name7t">
+							<input type="text" name="name7" id="name7"/><br>
+							<input type="text" name="nric7" id="nric7"/>
 						</td>
-						<td id="name6i" style="display:none">
+						<td id="name7i" style="display:none">
 							
 						</td>
 					<td>
-						<a href="javascript:goRun('6')"><img src="image006.png"/></a>
+						<a href="javascript:goRun('7')"><img src="image007.png"/></a>
 					</td>
 					<td>
-						<input type="text" name="remark6" id="remark6"/><br>
+						<input type="text" name="remark" id="remark" onclick="reload('7')"/><br>
 					</td>
 				</tr>
 			</table>
