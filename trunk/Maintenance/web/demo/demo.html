@@ -231,7 +231,7 @@ function demo1() {
     
     function reload(num){
     	var nextNumber = document.getElementById("img"+num);
-    	var image = "image00"+num+".png";
+    	var image = "image00"+num+".png?tempId="+Math.random();
     	nextNumber.innerHTML = "<img src="+image+"/>";
     }
   </SCRIPT>
@@ -315,6 +315,9 @@ function demo1() {
 							
 						</td>
 						<td>
+							<script>
+								
+							</script>
 							<a href="javascript:goRun('1')"><img src="image001.png"/></a>
 						</td>
 						<td>
