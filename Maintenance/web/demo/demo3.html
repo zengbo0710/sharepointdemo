@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> demo </title>
+	<script type="text/javascript" src="libs/base64.js"></script>
+	<script type="text/javascript" src="libs/sprintf.js"></script>
+	<script type="text/javascript" src="jspdf.js"></script>
+	<style type="text/css">
+		html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, address {
+	margin:0;
+	padding:0;
+		}
+body {
+	background: #fff url(graphics/bg-body.gif) repeat-x;
+	font:76%/160% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+	}
+p {
+	text-align:center;
+	}	
+a:link {
+	color:#d42945;
+	text-decoration:none;
+	border-bottom:1px dotted #ffbac8;
+	}	
+a:visited {
+	color:#d42945;
+	border-bottom:none;
+	text-decoration:none;
+	}		
+a:hover,
+a:focus {
+	color:#f03b58;
+	border-bottom:1px solid #f03b58;
+	text-decoration:none;
+	}
+table a,
+table a:link,
+table a:visited {
+	border:none;
+	}							
+	
+img {
+	border:0;
+	margin-top:.5em;
+	}	
+table {
+	width:90%;
+	border-top:1px solid #e5eff8;
+	border-right:1px solid #e5eff8;
+	margin:1em auto;
+		border-collapse:collapse;
+	}
+caption {
+	color: #9ba9b4;
+	font-size:2em;
+		letter-spacing:.1em;
+		margin:1em 0 0 0;
+		padding:0;
+		caption-side:top;
+		text-align:center;
+	}	
+tr.odd td	{
+	background:#f7fbff
+	}
+tr.odd .column1	{
+	background:#f4f9fe;
+	}	
+.column1	{
+	background:#f9fcfe;
+	}
+td {
+	color:#678197;
+	border-bottom:1px solid #e5eff8;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+	text-align:center;
+	}				
+th {
+	font-weight:normal;
+	color: #678197;
+	text-align:left;
+	border-bottom: 1px solid #e5eff8;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+	}							
+thead th {
+	background:#f4f9fe;
+	text-align:center;
+	font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+	color:#66a3d3
+	}	
+tfoot th {
+	text-align:center;
+	background:#f4f9fe;
+	}	
+tfoot th strong {
+	font:bold 1.2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+	margin:.5em .5em .5em 0;
+	color:#66a3d3;
+		}		
+tfoot th em {
+	color:#f03b58;
+	font-weight: bold;
+	font-size: 1.1em;
+	font-style: normal;
+	}	
+
+.button {
+    padding: 5px 10px;
+    display: inline;
+    background: #777 url(button.png) repeat-x bottom;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-shadow: 1px 1px #666;
+    }
+.button:hover {
+    background-position: 0 -48px;
+    }
+.button:active {
+    background-position: 0 top;
+    position: relative;
+    top: 1px;
+    padding: 6px 10px 4px;
+    }
+.button.red { background-color: #e50000; }
+.button.purple { background-color: #9400bf; }
+.button.green { background-color: #58aa00; }
+.button.orange { background-color: #ff9c00; }
+.button.blue { background-color: #2c6da0; }
+.button.black { background-color: #333; }
+.button.white { background-color: #fff; color: #000; text-shadow: 1px 1px #fff; }
+.button.small { font-size: 75%; padding: 3px 7px; }
+.button.small:hover { background-position: 0 -50px; }
+.button.small:active { padding: 4px 7px 2px; background-position: 0 top; }
+.button.large { font-size: 125%; padding: 7px 12px; }
+.button.large:hover { background-position: 0 -35px; }
+.button.large:active { padding: 8px 12px 6px; background-position: 0 top; }
+
+	</style>
+ </head>
+
+
+
+<SCRIPT  language=JavaScript> 
+
+function demo1() {
+	var url='demo.pdf';  
+	window.open(url,'Download');
+}
+
+  function demo4() {	
+	multiplier = parseInt(1);
+
+	var doc = new jsPDF();
+	doc.setFontSize(22);	
+	doc.text(20, 20, 'Maintenanace Report');
+	doc.setFontSize(16);
+	doc.text(20, 30, 'This belongs to: ' + name);
+	
+	for(var i = 1; i <= 12; i ++) {
+		doc.text(20, 30 + (i * 10), i + ' x ' + multiplier + ' = ___');
+	}
+	
+	doc.addPage();
+	doc.setFontSize(22);
+	doc.text(20, 20, 'Answers');
+	doc.setFontSize(16);
+	
+	for(var i = 1; i <= 12; i ++) {
+		doc.text(20, 30 + (i * 10), i + ' x ' + multiplier + ' = ' + (i * multiplier));
+	}
+	doc.output('datauri');
+}
+
+
+   function goRun(num) {
+	  var flag =  changeName(num);
+	  if(!flag){
+		  return;
+	  }
+	   var w = new ActiveXObject("WScript.Shell");
+	   //var url='sign.exe';
+	   var url = "file:///D:/tomcat6.0.35/webapps/maintenance/demo/sign00"+num+".exe"
+	   w.run(url);
+   }
+ 
+    function changeClick(num,name){
+    	var number = document.getElementById("step"+num);
+    	number.innerHTML=name;
+    	if(num==7){
+    		var number = document.getElementById("button1");
+    		number.disabled='';
+    	}else {
+	    	var nextNum = 1*num+1;
+	    	var nextNumber = document.getElementById("step"+nextNum);
+	    	nextNumber.style.display="";
+	    	var nextNumberi = document.getElementById("step"+nextNum+"i");
+	    	nextNumberi.style.display="none";
+    	}
+    }
+    
+    function changeName(num){
+    	var name = document.getElementById("name"+num).value;
+    	var nric = document.getElementById("nric"+num).value;
+    	if(name==''||nric==''){
+    		alert("Please input name and NRIC!");
+    		return false;
+    	}
+    	var nextNumber = document.getElementById("name"+num+"t");
+    	nextNumber.style.display="none";
+    	var nextNumberi = document.getElementById("name"+num+"i");
+    	nextNumberi.style.display="";
+    	nextNumberi.innerHTML = name+" / "+nric;
+    	return true;
+    }
+    
+    function changeRemark(num){
+    	var remark = document.getElementById("remark"+num).value;
+    	var nextNumber = document.getElementById("remark"+num+"t");
+    	nextNumber.style.display="none";
+    	var nextNumberi = document.getElementById("remark"+num+"i");
+    	nextNumberi.style.display="";
+    	nextNumberi.innerHTML = remark;
+    	
+    }
+    
+    function reload(num){
+    	var pic1 = document.getElementById("imgSrc"+num); 
+    	 pic1.src = "image00"+num+".png?tempId="+Math.random();
+    }
+    
+    function reloadImageSrc() {
+    	for(var i=1;i<7;i++){
+    	 	var pic1 = document.getElementById("imgSrc"+i); 
+    	    if (pic1 == typeof('undefined')||pic1==null) {
+    	    	continue;
+    	    }
+    	    pic1.src = "image00"+i+".png?tempId="+Math.random();
+    	}
+    }
+
+  </SCRIPT>
+  <body>
+  	<table>
+		<caption>
+			Maintenance Report
+		</caption>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<th>
+							Unit/Squadon:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="unit" id="unit"/><br>
+							Serviceman Rank/Name:&nbsp&nbsp<input type="text" name="rank" id="rank"/><br>
+							NRIC:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="NRIC" id="NRIC"/>
+						</th>
+						<th>
+							Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="date" id="date"/><br>
+							Time:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="time" id="time"/><br>
+							Location:&nbsp<input type="text" name="location" id="location"/>
+						</th>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: left">
+				Procedure:
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<thead>
+					<tr class="odd">
+						<th rowspan="2"  scope="col" abbr="Home">
+							Procedures
+						</th>
+						<th rowspan="2" scope="col" abbr="Home">
+							Description
+						</th>
+						<th rowspan="2" scope="col" abbr="Home">
+							status
+						</th>
+						<th colspan="3" scope="col" abbr="Home">
+							Witness Verification
+						</th>
+					</tr>
+					<tr class="odd">
+						
+						<th scope="col" abbr="Home">
+							Rank& Name/ NRIC
+						</th>
+						<th scope="col" abbr="Home">
+							Signature
+						</th>
+						<th scope="col" abbr="Home">
+							Remarks
+						</th>
+					</tr>
+					</thead>
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							<a href="DemoFiles/Demo1.html" onclick="window.open('DemoFiles/Demo1.html'); return false;" target="_blank">Step 1 instruction</a>
+						</td>
+						<td id="step1">
+							<a href="javascript:changeClick('1','Completed')">Completed</a> / <a href="javascript:changeClick('1','Not completed')">Not completed</a> / <a href="javascript:changeClick('1','pending')">Pending</a>
+						</td>
+						<td id="step1i" style="display:none">
+							Completed / Not completed / Pending
+						</td>
+						<td  id="name1t">
+							<input type="text" name="name1" id="name1"/><br>
+							<input type="text" name="nric1" id="nric1"/>
+						</td>
+						<td id="name1i" style="display:none">
+							
+						</td>
+						<td>
+							<a href="javascript:goRun('1')"><img id="imgSrc1" src="image001.png"/></a>
+						</td>
+						<td>
+							<input type="textarea" name="remark" id="remark" onclick="reload('1')"/><br>
+						</td>
+					</tr>
+					<tr class="odd">
+						<td>
+							2
+						</td>
+						<td>
+							<a href="DemoFiles/Demo2.html" onclick="window.open('DemoFiles/Demo2.html'); return false;" target="_blank">Step 2 instruction</a>
+						</td>
+						<td id="step2" style="display:none">
+							<a href="javascript:changeClick('2','Completed')">Completed</a> / <a href="javascript:changeClick('2','Not completed')">Not completed</a> / <a href="javascript:changeClick('2','pending')">Pending</a>
+						</td>
+						<td id="step2i">
+							Completed / Not completed / Pending
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							<input type="textarea" name="remark" id="remark4"/><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							3
+						</td>
+						<td>
+							<a href="DemoFiles/Demo3.html" onclick="window.open('DemoFiles/Demo3.html'); return false;" target="_blank">Step 3 instruction</a>
+						</td>
+						<td id="step3" style="display:none">
+							<a href="javascript:changeClick('3','Completed')">Completed</a> / <a href="javascript:changeClick('3','Not completed')">Not completed</a> / <a href="javascript:changeClick('3','pending')">Pending</a>
+						</td>
+						<td id="step3i">
+							Completed / Not completed / Pending
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							<input type="textarea" name="remark" id="remark4"/><br>
+						</td>
+					</tr>
+					<tr class="odd">
+						<td>
+							4
+						</td>
+						<td>
+							<a href="DemoFiles/Demo4.html" onclick="window.open('DemoFiles/Demo4.html'); return false;" target="_blank">Step 4 instruction</a>
+						</td>
+						<td id="step4"  style="display:none">
+							<a href="javascript:changeClick('4','Completed')">Completed</a> / <a href="javascript:changeClick('4','Not completed')">Not completed</a> / <a href="javascript:changeClick('4','pending')">Pending</a>
+						</td>
+						<td id="step4i">
+							Completed / Not completed / Pending
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							<input type="textarea" name="remark4" id="remark4"/><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							5
+						</td>
+						<td>
+							<a href="DemoFiles/Train1.html" onclick="window.open('DemoFiles/Train1.html'); return false;" target="_blank">Step 5 instruction</a>
+						</td>
+						<td id="step5" style="display:none">
+							<a href="javascript:changeClick('5','Completed')">Completed</a> / <a href="javascript:changeClick('5','Not completed')">Not completed</a> / <a href="javascript:changeClick('5','pending')">Pending</a>
+						</td>
+						<td id="step5i">
+							Completed / Not completed / Pending
+						</td>
+						<td  id="name5t">
+							<input type="text" name="name5" id="name5"/><br>
+							<input type="text" name="nric5" id="nric5"/>
+						</td>
+						<td id="name5i"  style="display:none">
+							
+						</td>
+						<td>
+							<a href="javascript:goRun('5')"><img id="imgSrc5" src="image005.png"/></a>
+						</td>
+						<td>
+							<input type="text" name="remark" id="remark"  onclick="reload('5')"/><br>
+						</td>
+					</tr>
+					<tr class="odd">
+						<td>
+							6
+						</td>
+						<td>
+							<a href="DemoFiles/Demo6.html" onclick="window.open('DemoFiles/Demo6.html'); return false;" target="_blank">Step 6 instruction</a>
+						</td>
+						<td id="step6"  style="display:none">
+							<a href="javascript:changeClick('6','Completed')">Completed</a> / <a href="javascript:changeClick('6','Not completed')">Not completed</a> / <a href="javascript:changeClick('6','pending')">Pending</a>
+						</td>
+						<td id="step6i">
+							Completed / Not completed / Pending
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							N.A.
+						</td>
+						<td>
+							<input type="textarea" name="remark" id="remark"/><br>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: left">
+				Testing & verification:
+			</td>
+		</tr>
+		<tr>
+			<table>
+				<tr>
+					<td>
+						1
+					</td>
+					<td id="step7" style="display:none">
+							<a href="javascript:changeClick('7','Completed')">Completed</a> / <a href="javascript:changeClick('7','Not completed')">Not completed</a> / <a href="javascript:changeClick('7','pending')">Pending</a>
+					</td>
+					<td id="step7i">
+							Completed / Not completed / Pending
+						</td>
+					<td  id="name7t">
+							<input type="text" name="name7" id="name7"/><br>
+							<input type="text" name="nric7" id="nric7"/>
+						</td>
+						<td id="name7i" style="display:none">
+							
+						</td>
+					<td>
+						<a href="javascript:goRun('7')"><img id="imgSrc7" src="image007.png"/></a>
+					</td>
+					<td>
+						<input type="text" name="remark" id="remark"  onclick="reload('7')"/><br>
+					</td>
+				</tr>
+			</table>
+		</tr>
+		<tr>
+			<td style="text-align: right">
+				<button id='button1' disabled class='button large green' onclick="demo1()">convert pdf</button>
+			</td>
+		</tr>
+	</table>
+ </body>
+ <script type="text/javascript">
+ reloadImageSrc();
+ </script>
+</html>
