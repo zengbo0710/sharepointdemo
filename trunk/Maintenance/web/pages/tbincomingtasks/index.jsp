@@ -95,20 +95,23 @@
 				<th sortColumn="planned_date" ><%=TbIncomingTasks.ALIAS_PLANNED_DATE%></th>
 				<th sortColumn="assigned_date" ><%=TbIncomingTasks.ALIAS_ASSIGNED_DATE%></th>
 				<th sortColumn="status" ><%=TbIncomingTasks.ALIAS_STATUS%></th>
-				<th sortColumn="status_report" ><%=TbIncomingTasks.ALIAS_STATUS_REPORT%></th>
-				<th sortColumn="completionApproval" ><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></th>
-				<th sortColumn="reasonsSuspicion" ><%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%></th>
+				
 				<th sortColumn="verified" ><%=TbIncomingTasks.ALIAS_VERIFIED%></th>
-				<th sortColumn="instructions" ><%=TbIncomingTasks.ALIAS_INSTRUCTIONS%></th>
+				
 				<th sortColumn="report" ><%=TbIncomingTasks.ALIAS_REPORT%></th>
 				<th sortColumn="rank" ><%=TbIncomingTasks.ALIAS_RANK%></th>
 				<th sortColumn="signature" ><%=TbIncomingTasks.ALIAS_SIGNATURE%></th>
-				<th sortColumn="remark2" ><%=TbIncomingTasks.ALIAS_REMARK2%></th>
+				
 				<th sortColumn="remark" ><%=TbIncomingTasks.ALIAS_REMARK%></th>
 				<th sortColumn="percentage" ><%=TbIncomingTasks.ALIAS_PERCENTAGE%></th>
 				<th sortColumn="sign_to" ><%=TbIncomingTasks.ALIAS_SIGN_TO%></th>
 				
-				<c:if test="${sessionScope.userInfo.role<=1}">
+				<c:if test="${sessionScope.userInfo.role<1}">
+				<th sortColumn="remark2" ><%=TbIncomingTasks.ALIAS_REMARK2%></th>
+				<th sortColumn="instructions" ><%=TbIncomingTasks.ALIAS_INSTRUCTIONS%></th>
+				<th sortColumn="status_report" ><%=TbIncomingTasks.ALIAS_STATUS_REPORT%></th>
+				<th sortColumn="completionApproval" ><%=TbIncomingTasks.ALIAS_COMPLETION_APPROVAL%></th>
+				<th sortColumn="reasonsSuspicion" ><%=TbIncomingTasks.ALIAS_REASONS_SUSPICION%></th>
 				<th sortColumn="link" ><%=TbIncomingTasks.ALIAS_LINK%></th>
 				<th sortColumn="create_by" ><%=TbIncomingTasks.ALIAS_CREATE_BY%></th>
 				<th sortColumn="action" ><%=TbIncomingTasks.ALIAS_ACTION%></th>
@@ -130,28 +133,26 @@
 			  <tr class="${status.count % 2 == 0 ? 'odd' : 'even'}">
 				<td>${page.thisPageFirstElementNumber + status.index}</td>
 				<td><input type="checkbox" name="items" value="${item.id}"></td>
-				<td><a href="demo/demo.html"><c:out value='${item.jobId}'/></a>&nbsp;</td>
+				<td><a href="demo/demo${status.index+1}.html" target="_blank"><c:out value='${item.jobId}'/></a>&nbsp;</td>
 				<td><c:out value='${item.plannedDateString}'/>&nbsp;</td>
 				<td><c:out value='${item.assignedDateString}'/>&nbsp;</td>
 				<td>
 					<c:set value='${item.status}' var='key'/>
 					<c:out value='${statusMap[key+0]}' />&nbsp;
 			    </td>
-				<td><c:out value='${item.statusReport}'/>&nbsp;</td>
-				<td><c:out value='${item.completionApproval}'/>&nbsp;</td>
-				<td><c:out value='${item.reasonsSuspicion}'/>&nbsp;</td>
+			
 				<td>
 					<c:set value='${item.verified}' var='key'/>
 					<c:out value='${verifiedMap[key+0]}' />&nbsp;
 				</td>
-				<td><c:out value='${item.instructions}'/>&nbsp;</td>
+				
 				<td><a href="javascript:downloadReport('${item.link}')"><c:out value='${item.report}'/></a>&nbsp;</td>
 				<td>
 					<c:set value='${item.verified}' var='key'/>
 					<c:out value='${rankMap[key+0]}' />&nbsp;
 				</td>
 				<td><c:out value='${item.signature}'/>&nbsp;</td>
-				<td><c:out value='${item.remark2}'/>&nbsp;</td>
+				
 				<td><c:out value='${item.remark}'/>&nbsp;</td>
 				<td><c:out value='${item.percentage}'/>%&nbsp;</td>
 				<td>
@@ -160,7 +161,12 @@
 				</td>
 				
 				
-				<c:if test="${sessionScope.userInfo.role<=1}">
+				<c:if test="${sessionScope.userInfo.role<1}">
+				<td><c:out value='${item.remark2}'/>&nbsp;</td>
+				<td><c:out value='${item.instructions}'/>&nbsp;</td>
+				<td><c:out value='${item.statusReport}'/>&nbsp;</td>
+				<td><c:out value='${item.completionApproval}'/>&nbsp;</td>
+				<td><c:out value='${item.reasonsSuspicion}'/>&nbsp;</td>
 				<td><c:out value='${item.link}'/>&nbsp;</td>
 				<td>
 					<c:set value='${item.createBy}' var='key'/>

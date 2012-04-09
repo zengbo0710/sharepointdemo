@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="libs/base64.js"></script>
 	<script type="text/javascript" src="libs/sprintf.js"></script>
 	<script type="text/javascript" src="jspdf.js"></script>
+	<script type="text/javascript" src="js/3Dactions.js"></script>
 	<style type="text/css">
 		html, body, form, fieldset, h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol, dl, address {
 	margin:0;
@@ -82,7 +83,13 @@ th {
 	border-bottom: 1px solid #e5eff8;
 	border-left:1px solid #e5eff8;
 	padding:.3em 1em;
-	}							
+	}
+td.title{
+	background:#f4f9fe;
+	text-align:center;
+	font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+	color:#66a3d3
+}							
 thead th {
 	background:#f4f9fe;
 	text-align:center;
@@ -179,10 +186,6 @@ function demo1() {
 
 
    function goRun(num) {
-	  var flag =  changeName(num);
-	  if(!flag){
-		  return;
-	  }
 	   var w = new ActiveXObject("WScript.Shell");
 	   //var url='sign.exe';
 	   var url = "file:///D:/tomcat6.0.35/webapps/maintenance/demo/sign00"+num+".exe"
@@ -243,57 +246,164 @@ function demo1() {
     	    pic1.src = "image00"+i+".png?tempId="+Math.random();
     	}
     }
+    
+    function buttonChange(fun) {
+    	var def = 1;
+    	var num = 1;
+    	def = document.getElementById("pageNum").value;
+    	if(fun=='true'){
+    		num = def*1+1;
+    		document.getElementById("pageNum").value=num;
+    	}else {
+    		if(def==null||def*1==1){
+    			num = 1;
+    			def = 1;
+    		}else {
+    			num=def-1;
+    		}
+    		document.getElementById("pageNum").value=num;
+    	}
+    	if(num==8){
+    		return;
+    	}
+    	var stepName="Step 1: Remove Connecting Clip";
+    	switch (num)
+    	{
+    	  case 1: stepName="Step 1: Remove Connecting Clip"; break;
+    	  case 2: stepName="Step 2: Remove Connecting Clip"; break;
+    	  case 3: stepName="Step 3: Remove Connecting Clip"; break;
+    	  case 4: stepName="Step 4: Remove Connecting Clip"; break;
+    	  case 5: stepName="Step 5: Remove Connecting Clip"; break;
+    	  case 6: stepName="Step 6: Remove Connecting Clip"; break;
+    	  case 7: stepName="Step 7: Remove Connecting Clip"; break;
+    	  default: stepName; break;
+    	}
+    	var nextNumber = document.getElementById("tr"+def);
+    	nextNumber.style.display="none";
+    	var nextNumberi = document.getElementById("tr"+num);
+    	nextNumberi.style.display="";
+    	document.getElementById("stepSpan").innerHTML=stepName;
+    }
+    
+    function call3DViewer(){
+    	var numb = document.getElementById("pageNum").value;
+    	var val = numb*1-1;
+    	CtrlStepsChange(val);
+    }
   </SCRIPT>
   <body>
+  	<input type="hidden" id="pageNum" name="pageNum" value="1"/>
   	<table>
 		<caption>
 			Maintenance Report
 		</caption>
 			<tr>
-				<td colspan="6">
-					<object type="text/x-scriptlet" data="DemoFiles/Train1.html" width=100% height=700px></object>
+				<td colspan="4">
+					<table>
+						<tr>
+							<th>
+								Name:&nbsp<input type="text" name="name" id="name"/><br>
+								Date:&nbsp&nbsp<input type="text" name="date" id="date"/><br>
+							</th>
+							<th>
+								Job No.:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="job" id="job"/><br>
+								Description:&nbsp<input type="text" name="description" id="description"/>
+							</th>
+						</tr>
+					</table>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<a >step1</a>
-				</td>
-				<td>
-					<a >step2</a>
-				</td>
-				<td>
-					<a >step3</a>
-				</td>
-				<td>
-					<a >step4</a>
-				</td>
-				<td>
-					<a >step5</a>
-				</td>
-				<td>
-					<a >step6</a>
+				<td colspan="4" bgcolor="#FFFFFF">
+					<!--rh-object-begin-->
+					<object id="ev3de" type="application/rh" border="0" width="100%" height="700px">
+						<param name="BackStyle" value="0" />
+						<param name="FillColor" value="16777215" />
+						<div align="center">
+							If you see this text, Deep View ActiveX control is not installed or<br />
+							not initialized. Please download and install it. Use the following link:<br />
+						<a href="http://www.righthemisphere.com/products/deepview/downloads/DeepView.cab">http://www.righthemisphere.com/products/deepview/downloads/DeepView.cab</a><br />
+							If this error message persists, check your security settings<br />
+							(ActiveX must be allowed) or use another WEB browser.<br />
+							Using Microsoft Internet Explorer is prefered.<br />
+						</div>
+					</object>
+					<!--rh-object-end-->
 				</td>
 			</tr>
-			<tr class="odd" >
+			<tr>
+				<td colspan="4">
+					Current Step:<span id="stepSpan">Step 1: Remove Connecting Clip</span>
+					
+				<a href="#" id="l_steps" OnClick="buttonChange('false');call3DViewer();return false;"><img
+				border="0" width="36" height="36"
+				title="Rewind current step to beginning"
+				OnMouseOver="this.src='image/s_butt_play_back_h.gif'; return false;"
+				OnMouseDown="this.src='image/s_butt_play_back_c.gif'; return false;"
+				OnMouseUp="this.src='image/s_butt_play_back_h.gif'; return false;"
+				OnMouseOut="this.src='image/s_butt_play_back_s.gif'; return false;"
+				src="image/s_butt_play_back_s.gif"></a>
+				
+				
+				<a href="#" OnClick="PauseCurrStep();return false;"><img
+				border="0" width="36" height="36"
+				title="Pause current step"
+				OnMouseOver="this.src='image/s_butt_pause_h.gif'; return false;"
+				OnMouseDown="this.src='image/s_butt_pause_c.gif'; return false;"
+				OnMouseUp="this.src='image/s_butt_pause_h.gif'; return false;"
+				OnMouseOut="this.src='image/s_butt_pause_s.gif'; return false;"
+				src="image/s_butt_pause_s.gif"></a>
+				
+				<a href="#" OnClick="buttonChange('true');call3DViewer();return false;"><img
+				border="0" width="36" height="36"
+				title="Play current step"
+				OnMouseOver="this.src='image/s_butt_play_h.gif'; return false;"
+				OnMouseDown="this.src='image/s_butt_play_c.gif'; return false;"
+				OnMouseUp="this.src='image/s_butt_play_h.gif'; return false;"
+				OnMouseOut="this.src='image/s_butt_play_s.gif'; return false;"
+				src="image/s_butt_play_s.gif"></a>
+				</td>
+			</tr>
+			<tr class="odd">
+				<td class="title">
+					Procedures
+				</td>
+				<td class="title">
+					status
+				</td>
+				<td class="title">
+					Signature
+				</td>
+				<td class="title">
+					Remarks
+				</td>
+			</tr>
+			<tr id="tr1" class="odd" >
 				<td>
-					2
+					1
+				</td>
+				<td id="step1">
+					<a href="javascript:changeClick('1','Completed')">Completed</a> / <a href="javascript:changeClick('1','Not completed')">Not completed</a> / <a href="javascript:changeClick('1','pending')">Pending</a>
+				</td>
+				<td id="step1i" style="display:none">
+					Completed / Not completed / Pending
+				</td>
+				<td id="img1">
+					<a href="javascript:goRun('1')"><img id="imgSrc1" src="image001.png"/></a>
 				</td>
 				<td>
-					<a href="DemoFiles/Demo2.html" onclick="window.open('DemoFiles/Demo2.html'); return false;" target="_blank">Step 2 instruction</a>
-					
+					<input type="textarea" name="remark" id="remark" onclick="reload('1')"/><br>
+				</td>
+			</tr>
+			<tr id="tr2"  style="display:none">
+				<td>
+					2
 				</td>
 				<td id="step2" style="display:none">
 					<a href="javascript:changeClick('2','Completed')">Completed</a> / <a href="javascript:changeClick('2','Not completed')">Not completed</a> / <a href="javascript:changeClick('2','pending')">Pending</a>
 				</td>
 				<td id="step2i">
 					Completed / Not completed / Pending
-				</td>
-				<td  id="name2t">
-					<input type="text" name="name2" id="name2"/><br>
-					<input type="text" name="nric2" id="nric2"/>
-				</td>
-				<td id="name2i" style="display:none">
-					
 				</td>
 				<td id="img2">
 					<a href="javascript:goRun('2')"><img id="imgSrc2" src="image002.png"/></a>
@@ -302,26 +412,15 @@ function demo1() {
 					<input type="textarea" name="remark" id="remark" onclick="reload('2')"/><br>
 				</td>
 			</tr>
-			<tr  style="display:none">
+			<tr id="tr3" class="odd"  style="display:none">
 				<td>
 					3
-				</td>
-				<td>
-					<a href="DemoFiles/Demo3.html" onclick="window.open('DemoFiles/Demo3.html'); return false;" target="_blank">Step 3 instruction</a>
-				
 				</td>
 				<td id="step3" style="display:none">
 					<a href="javascript:changeClick('3','Completed')">Completed</a> / <a href="javascript:changeClick('3','Not completed')">Not completed</a> / <a href="javascript:changeClick('3','pending')">Pending</a>
 				</td>
 				<td id="step3i">
 					Completed / Not completed / Pending
-				</td>
-				<td  id="name3t">
-					<input type="text" name="name3" id="name3"/><br>
-					<input type="text" name="nric3" id="nric3"/>
-				</td>
-				<td id="name3i" style="display:none">
-					
 				</td>
 				<td id="img3">
 					<a href="javascript:goRun('3')"><img id="imgSrc3" src="image003.png"/></a>
@@ -330,12 +429,9 @@ function demo1() {
 					<input type="textarea" name="remark" id="remark" onclick="reload('3')"/><br>
 				</td>
 			</tr>
-			<tr class="odd"  style="display:none">
+			<tr id="tr4" style="display:none">
 				<td>
 					4
-				</td>
-				<td>
-					<a href="DemoFiles/Demo4.html" onclick="window.open('DemoFiles/Demo4.html'); return false;" target="_blank">Step 4 instruction</a>
 				</td>
 				<td id="step4" style="display:none">
 					<a href="javascript:changeClick('4','Completed')">Completed</a> / <a href="javascript:changeClick('4','Not completed')">Not completed</a> / <a href="javascript:changeClick('4','pending')">Pending</a>
@@ -343,26 +439,16 @@ function demo1() {
 				<td id="step4i">
 					Completed / Not completed / Pending
 				</td>
-				<td  id="name4t">
-					<input type="text" name="name4" id="name4"/><br>
-					<input type="text" name="nric4" id="nric4"/>
-				</td>
-				<td id="name4i" style="display:none">
-					
-				</td>
 				<td id="img4">
 					<a href="javascript:goRun('4')"><img id="imgSrc4" src="image004.png"/></a>
 				</td>
 				<td>
-					<input type="textarea" name="remark" id="remark" onclick="reload('4')"/><br>
+					<input type="text" name="remark" id="remark" onclick="reload('4')"/><br>
 				</td>
 			</tr>
-			<tr style="display:none">
+			<tr id="tr5" class="odd" style="display:none">
 				<td>
 					5
-				</td>
-				<td>
-					<a href="DemoFiles/Train1.html" onclick="window.open('DemoFiles/Train1.html'); return false;" target="_blank">Step 5 instruction</a>
 				</td>
 				<td id="step5" style="display:none">
 					<a href="javascript:changeClick('5','Completed')">Completed</a> / <a href="javascript:changeClick('5','Not completed')">Not completed</a> / <a href="javascript:changeClick('5','pending')">Pending</a>
@@ -370,26 +456,16 @@ function demo1() {
 				<td id="step5i">
 					Completed / Not completed / Pending
 				</td>
-				<td  id="name5t">
-					<input type="text" name="name5" id="name5"/><br>
-					<input type="text" name="nric5" id="nric5"/>
-				</td>
-				<td id="name5i" style="display:none">
-					
-				</td>
 				<td id="img5">
-					<a href="javascript:goRun('5')"><img id="imgSrc5" src="image005.png"/></a>
+					<a href="javascript:goRun('5')"><img  id="imgSrc5" src="image005.png"/></a>
 				</td>
 				<td>
-					<input type="text" name="remark5" id="remark5" onclick="reload('5')"/><br>
+					<input type="text" name="remark" id="remark" onclick="reload('5')"/><br>
 				</td>
 			</tr>
-			<tr class="odd" style="display:none">
+			<tr id="tr6" class="odd" style="display:none">
 				<td>
 					6
-				</td>
-				<td>
-					<a href="DemoFiles/Train2.html" onclick="window.open('DemoFiles/Train2.html'); return false;" target="_blank">Step 6 instruction</a>
 				</td>
 				<td id="step6" style="display:none">
 					<a href="javascript:changeClick('6','Completed')">Completed</a> / <a href="javascript:changeClick('6','Not completed')">Not completed</a> / <a href="javascript:changeClick('6','pending')">Pending</a>
@@ -397,28 +473,49 @@ function demo1() {
 				<td id="step6i">
 					Completed / Not completed / Pending
 				</td>
-				<td  id="name6t">
-					<input type="text" name="name6" id="name6"/><br>
-					<input type="text" name="nric6" id="nric6"/>
-				</td>
-				<td id="name6i" style="display:none">
-					
-				</td>
 				<td id="img6">
 					<a href="javascript:goRun('6')"><img  id="imgSrc6" src="image006.png"/></a>
 				</td>
 				<td>
-					<input type="text" name="remark6" id="remark6" onclick="reload('6')"/><br>
+					<input type="text" name="remark" id="remark6" onclick="reload('6')"/><br>
+				</td>
+			</tr>
+			<tr id="tr7" class="odd" style="display:none">
+				<td>
+					7
+				</td>
+				<td id="step7" style="display:none">
+					<a href="javascript:changeClick('7','Completed')">Completed</a> / <a href="javascript:changeClick('7','Not completed')">Not completed</a> / <a href="javascript:changeClick('7','pending')">Pending</a>
+				</td>
+				<td id="step7i">
+					Completed / Not completed / Pending
+				</td>
+				<td id="img7">
+					<a href="javascript:goRun('7')"><img  id="imgSrc7" src="image007.png"/></a>
+				</td>
+				<td>
+					<input type="text" name="remark" id="remark" onclick="reload('7')"/><br>
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: right" colspan="6">
+				<td style="text-align: right" colspan="4">
 					<button id='button1' disabled class='button large green' onclick="demo1()">convert pdf</button>
 				</td>
 			</tr>
 	</table>
  </body>
  <script type="text/javascript">
- reloadImageSrc();
+ 	reloadImageSrc();
+ 	function SceneLoaded(res)
+ 	{
+ 		InitSteps(
+ 			document.getElementById("l_steps"),
+ 			null,
+ 			null
+ 		);
+ 	}
+	var dv_ctrl = document.getElementById("ev3de");
+	dv_ctrl.SceneLoaded = SceneLoaded;
+	dv_ctrl.FileName = '3DFiles/StrainerFull1.rh';
  </script>
 </html>
